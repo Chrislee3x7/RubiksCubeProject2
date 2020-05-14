@@ -23,7 +23,7 @@ public class DisplayCube extends JPanel {
     private Image background;
 
     private Cube cube;
-
+    
     public DisplayCube(Cube cube) {
         background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background3.jpg");
         this.cube = cube;
