@@ -19,14 +19,22 @@ public class RubiksCube {
 
         window = new JFrame("Rubik's Cube");
 
-        JPanel displayCube = new DisplayCube(cube);
+        DisplayCube displayCube = new DisplayCube(cube);
         window.getContentPane().add(displayCube);
 
         //window.setBounds(200, 50, 400, 430);
-        window.setBounds(200, 50, 600, 700);
+        window.setBounds(200, 50, 600, 650);
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.setResizable(true);
+        window.setResizable(false);
         window.setVisible(true);
+
+        displayCube.update();
+
+        cube.rotateSideLayer(0,TurnDirection.CLOCKWISE);
+        cube.rotateSideLayer(0,TurnDirection.CLOCKWISE);
+        displayCube.update();
+
+        //cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
     }
 
 }

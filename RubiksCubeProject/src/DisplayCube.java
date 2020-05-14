@@ -1,3 +1,5 @@
+import sun.plugin.javascript.navig4.Layer;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -25,7 +27,7 @@ public class DisplayCube extends JPanel {
     private Cube cube;
 
     public DisplayCube(Cube cube) {
-        background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background3.jpg");
+        background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background4.jpg");
         this.cube = cube;
         //System.out.println(APOTHEM);
     }
@@ -40,23 +42,27 @@ public class DisplayCube extends JPanel {
                 // can be changed to take user input later
                 return Color.WHITE;
             case ORANGE:
-                return Color.ORANGE;
+                return Color.PINK;
             case GREEN:
                 return Color.GREEN;
             case BLUE:
-                return Color.CYAN;
+                return Color.BLUE;
             case RED:
-                return Color.PINK;
+                return Color.RED;
             case YELLOW:
                 return Color.YELLOW;
             default:
+                System.out.println("Bruh where's the color");
                 return null;
         }
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(background, -900, -200, this);
+
+        //g.drawImage(background, -1300, -900,this);
+        //Background3
+        //g.drawImage(background, -900, -400, this);
 
         Polygon rhombus1 = new Polygon();
         rhombus1.addPoint(WINDOW_DIMENSION / 2, WINDOW_DIMENSION / 2);
@@ -74,23 +80,17 @@ public class DisplayCube extends JPanel {
         rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), WINDOW_DIMENSION / 2 + CUBE_RADIUS / 2);
         rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), WINDOW_DIMENSION / 2 - CUBE_RADIUS / 2);
 
-
+        g.setColor(Color.BLACK);
         g.fillPolygon(rhombus1);
         g.fillPolygon(rhombus2);
         g.fillPolygon(rhombus3);
-        g.setColor(Color.WHITE);
+//        g.setColor(Color.WHITE);
 
-        CubeFace currentFace = cube.getCubeFaceArray()[cube.getUpFaceIndex()];
-        for (Sticker sticker : currentFace.getAllStickers()) {
-            StickerColor stickerColor = sticker.getColor();
-            g.setColor(getDisplayColor(stickerColor));
-            g.fillPolygon(makeUpFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
-                    sticker.getStickerLocation().getStickerIndex() / 3));
-            g.fillPolygon(makeFrontFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
-                    sticker.getStickerLocation().getStickerIndex() / 3));
-            g.fillPolygon(makeRightFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
-                    sticker.getStickerLocation().getStickerIndex() / 3));
-        }
+        displayCubeFace(g, cube.getUpFaceIndex(), LayerNotation.UP);
+        displayCubeFace(g, cube.getFrontFaceIndex(), LayerNotation.FRONT);
+        displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.RIGHT);
+
+        g.fillPolygon(makeUpFaceSticker(2, 2));
 
 
 //        g.fillPolygon(makeUpFaceSticker(0, 0));
@@ -161,6 +161,32 @@ public class DisplayCube extends JPanel {
 //        g.drawPolygon(makeRightFaceSticker(2, 0));
 //        g.drawPolygon(makeRightFaceSticker(2, 1));
 //        g.drawPolygon(makeRightFaceSticker(2, 2));
+    }
+
+    public void displayCubeFace(Graphics g, int faceIndex, LayerNotation face) {
+        CubeFace currentFace = cube.getCubeFaceArray()[faceIndex];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            StickerColor stickerColor = sticker.getColor();
+            g.setColor(getDisplayColor(stickerColor));
+//            g.setColor(Color.green);
+            //System.out.println(stickerColor);
+            switch (face) {
+                case UP:
+                    g.fillPolygon(makeUpFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                            sticker.getStickerLocation().getStickerIndex() / 3));
+                    break;
+                case FRONT:
+                    g.fillPolygon(makeFrontFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                            sticker.getStickerLocation().getStickerIndex() / 3));
+                    break;
+                case RIGHT:
+                    g.fillPolygon(makeRightFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                            sticker.getStickerLocation().getStickerIndex() / 3));
+                    break;
+                default:
+                    System.out.println("this is a broken sticker");
+            }
+        }
     }
 
     public Polygon makeUpFaceSticker(int sX, int sY) {
