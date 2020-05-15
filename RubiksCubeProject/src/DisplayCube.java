@@ -30,6 +30,7 @@ public class DisplayCube extends JPanel {
         background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background4.jpg");
         this.cube = cube;
         setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
+
         //System.out.println(APOTHEM);
     }
 
@@ -61,7 +62,7 @@ public class DisplayCube extends JPanel {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        //g.drawImage(background, -1300, -900,this);
+        g.drawImage(background, -1300, -900,this);
         //Background3
         //g.drawImage(background, -900, -400, this);
 
@@ -87,9 +88,9 @@ public class DisplayCube extends JPanel {
         g.fillPolygon(rhombus3);
 //        g.setColor(Color.WHITE);
 
-        displayCubeFace(g, cube.getUpFaceIndex(), LayerNotation.UP);
-        displayCubeFace(g, cube.getFrontFaceIndex(), LayerNotation.FRONT);
-        displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.RIGHT);
+        displayCubeFace(g, cube.getUpFaceIndex(), LayerNotation.U);
+        displayCubeFace(g, cube.getFrontFaceIndex(), LayerNotation.F);
+        displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.R);
 
         //g.fillPolygon(makeUpFaceSticker(2, 2));
 
@@ -172,15 +173,15 @@ public class DisplayCube extends JPanel {
 //            g.setColor(Color.green);
             //System.out.println(stickerColor);
             switch (face) {
-                case UP:
+                case U:
                     g.fillPolygon(makeUpFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;
-                case FRONT:
+                case F:
                     g.fillPolygon(makeFrontFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;
-                case RIGHT:
+                case R:
                     g.fillPolygon(makeRightFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;

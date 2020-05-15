@@ -22,8 +22,8 @@ public class RubiksCube {
         DisplayCube displayCube = new DisplayCube(cube);
         ControlPanel controlPanel = new ControlPanel();
 
-        window.getContentPane().add(displayCube);
-        window.getContentPane().add(controlPanel);
+        window.add(displayCube, BorderLayout.WEST);
+        window.add(controlPanel, BorderLayout.EAST);
 
         window.setLocation(200,50);
         window.pack();
@@ -34,7 +34,7 @@ public class RubiksCube {
         displayCube.update();
 
         cube.rotateSideLayer(1,TurnDirection.CLOCKWISE);
-        cube.rotateM(TurnDirection.CLOCKWISE, LayerNotation.M);
+        //cube.rotateM(TurnDirection.CLOCKWISE, LayerNotation.M);
 
 
     }
