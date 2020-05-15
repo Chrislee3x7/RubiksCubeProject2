@@ -27,7 +27,7 @@ public class Cube {
         frontFaceIndex = 2;
         rightFaceIndex = 3;
 
-        currentScramble = "No Scramble";
+        currentScramble = "Click Me To Scramble";
         //System.out.println("Immideate call" + getCurrentScramble());
     }
 
@@ -62,13 +62,20 @@ public class Cube {
         //System.out.println(":" + scramble.toString());
         //System.out.println(currentScramble + "ohno");
         while (scramble.length() > 0) {
-            String currentMove = scramble.substring(0, 1);
+            int indexOfFirstSpace = 0;
+            for (int i = 0; i < scramble.length(); i++) {
+                if(scramble.substring(i, i + 1).equals(" ")) {
+                    indexOfFirstSpace = i;
+                    break;
+                }
+            }
+            String currentMove = scramble.substring(0, indexOfFirstSpace);
             if(scramble.substring(0, 1).equals(" ")) {
                 scramble.replace(0, 1, "");
             }
             else {
                 preformMove(currentMove);
-                scramble.replace(0, 1, "");
+                scramble.replace(0, indexOfFirstSpace, "");
             }
         }
         //perform move updates cube
@@ -85,23 +92,11 @@ public class Cube {
         int randomNumOfMoves = (int) (Math.random() * 5 + 20);
         StringBuilder scrambleNotation = new StringBuilder();
         int i = 0;
-        String temp1 = "";
-        String temp2 = "";
         while (i < randomNumOfMoves) {
             int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
             String temp = ControlPanel.moveNotations[randomMove];
+
             // if 3 moves are the same delete i 2 times and replace it with its opposite
-            //
-
-//            if((temp1.equals(temp2) && temp1.equals(temp) && !temp1.equals("") && !temp2.equals("")) || (temp2.endsWith("'") && temp.charAt(0) == temp2.charAt(0)) || (temp.endsWith("'") && temp2.charAt(0) == temp.charAt(0))) {
-//                continue;
-//            }
-//            if (temp1 .equals(temp) && temp2.equals(temp) &&  )
-//            if(!temp1.equals("")){
-//                temp2 = temp1;
-//            }
-//            temp1 = temp;
-
             scrambleNotation.append(temp + " ");
             i++;
         }
