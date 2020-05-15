@@ -30,15 +30,10 @@ public class RubiksCube {
 
         displayCube.update();
 
-//        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
-//        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
-//        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
-//        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
-
-        cube.rotateMiddleLayer(TurnDirection.CLOCKWISE, LayerNotation.M);
-        cube.rotateMiddleLayer(TurnDirection.COUNTERCLOCKWISE, LayerNotation.S);
-        cube.rotateMiddleLayer(TurnDirection.CLOCKWISE, LayerNotation.E);
-
+        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
+        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
+        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
+        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
         displayCube.update();
 
         //cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
