@@ -30,8 +30,6 @@ public class DisplayCube extends JPanel {
         background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background4.jpg");
         this.cube = cube;
         setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
-        add(new ScramblePanel(cube), BorderLayout.SOUTH);
-
         //System.out.println(APOTHEM);
     }
 

@@ -28,7 +28,12 @@ public class Cube {
         rightFaceIndex = 3;
 
         currentScramble = "No Scramble";
-        System.out.println(currentScramble);
+        //System.out.println("Immideate call" + getCurrentScramble());
+    }
+
+    public String getCurrentScramble() {
+        //System.out.println(currentScramble+ "pp");
+        return currentScramble;
     }
 
     public CubeFace[] getCubeFaceArray() {
@@ -51,14 +56,11 @@ public class Cube {
         return displayCube;
     }
 
-    public String getCurrentScramble() {
-        System.out.println(currentScramble+ "pp");
-        return currentScramble;
-    }
-
     public void scrambleCube() {
         StringBuilder scramble = scrambleGenerator();
         currentScramble = scramble.toString();
+        //System.out.println(":" + scramble.toString());
+        //System.out.println(currentScramble + "ohno");
         while (scramble.length() > 0) {
             String currentMove = scramble.substring(0, 1);
             if(scramble.substring(0, 1).equals(" ")) {
@@ -69,6 +71,8 @@ public class Cube {
                 scramble.replace(0, 1, "");
             }
         }
+        //perform move updates cube
+        //displayCube.update();
     }
 
     //basically all stickers of the layer being rotated must move.
@@ -78,7 +82,7 @@ public class Cube {
     //but also the connected stickers.
 
     private StringBuilder scrambleGenerator () {
-        int randomNumOfMoves = (int) (Math.random() * 5 + 26);
+        int randomNumOfMoves = (int) (Math.random() * 5 + 20);
         StringBuilder scrambleNotation = new StringBuilder();
         int i = 0;
         String temp1 = "";

@@ -24,6 +24,7 @@ public class RubiksCube {
         DisplayCube displayCube = cube.getDisplayCube();
         window.add(displayCube, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
+        window.add(new ScramblePanel(cube), BorderLayout.SOUTH);
         window.getContentPane().add(displayCube);
 
         window.setBounds(50, 50, 600, 650);
@@ -31,11 +32,11 @@ public class RubiksCube {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-        displayCube.update();
+//        displayCube.update();
 
-//        cube.scrambleCube();
+        //cube.scrambleCube();
 
-        displayCube.update();
+//        displayCube.update();
     }
 
 }
