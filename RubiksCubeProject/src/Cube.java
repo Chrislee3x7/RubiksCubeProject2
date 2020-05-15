@@ -54,6 +54,7 @@ public class Cube {
     }
 
     public void scrambleCube() {
+        reset();
         StringBuilder scramble = scrambleGenerator();
         currentScramble = scramble.toString();
         //System.out.println(":" + scramble.toString());
@@ -93,6 +94,10 @@ public class Cube {
             int randomMove = (int) (Math.random() * moveNotations.length);
             String temp = moveNotations[randomMove];
             //if 2 moves are the same delete i once and replace both moves with "move"2
+
+            if (scrambleNotation.length() > 0) {
+
+            }
 
             // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
             // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
@@ -191,7 +196,7 @@ public class Cube {
 
     }
 
-    private void reset () {
+    public void reset () {
         cubeFaceArray[0] = new CubeFace(StickerColor.WHITE, 0);
         cubeFaceArray[1] = new CubeFace(StickerColor.ORANGE, 1);
         cubeFaceArray[2] = new CubeFace(StickerColor.GREEN, 2);
