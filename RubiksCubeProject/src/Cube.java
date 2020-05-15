@@ -1,5 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 public class Cube {
 
@@ -8,6 +10,7 @@ public class Cube {
     private int frontFaceIndex;
     private int rightFaceIndex;
     private DisplayCube displayCube;
+
 
     public Cube() {
 
@@ -44,6 +47,20 @@ public class Cube {
         return displayCube;
     }
 
+    public void scrambleCube() {
+        StringBuilder scramble = scrambleGenerator();
+        while (scramble.length() > 0) {
+            String currentMove = scramble.substring(0, 1);
+            if(scramble.substring(0, 1).equals(" ")) {
+                scramble.replace(0, 1, "");
+            }
+            else {
+                preformMove(currentMove);
+                scramble.replace(0, 1, "");
+            }
+
+        }
+    }
 
     //basically all stickers of the layer being rotated must move.
     //each sticker (except center) has "other" sticker(s) that must follow it
@@ -51,7 +68,35 @@ public class Cube {
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
 
+    public StringBuilder scrambleGenerator () {
+        int randomNumOfMoves = (int) (Math.random() * 5 + 26);
+        StringBuilder scrambleNotation = new StringBuilder();
+        int i = 0;
+        String temp1 = "";
+        String temp2 = "";
+        while (i < randomNumOfMoves) {
+            int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
+            String temp = ControlPanel.moveNotations[randomMove];
+
+//            if((temp1.equals(temp2) && temp1.equals(temp) && !temp1.equals("") && !temp2.equals("")) || (temp2.endsWith("'") && temp.charAt(0) == temp2.charAt(0)) || (temp.endsWith("'") && temp2.charAt(0) == temp.charAt(0))) {
+//                continue;
+//            }
+//            if (temp1 .equals(temp) && temp2.equals(temp) &&  )
+//            if(!temp1.equals("")){
+//                temp2 = temp1;
+//            }
+//            temp1 = temp;
+
+            scrambleNotation.append(temp + " ");
+            i++;
+        }
+        return scrambleNotation;
+    }
+
     public void preformMove (String commandNotation) {
+//        MoveNotationInfo moveNotationInfo = ControlPanel.moveNotationInfoMap.get(commandNotation);
+//        rotateSide(moveNotationInfo.getLayerNotation(), moveNotationInfo.getTurnDirection());
+
         switch (commandNotation) {
             case "U":
                 rotateSide(LayerNotation.U, TurnDirection.CLOCKWISE);

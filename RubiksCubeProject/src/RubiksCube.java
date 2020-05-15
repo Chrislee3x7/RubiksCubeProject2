@@ -31,13 +31,11 @@ public class RubiksCube {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
-
         displayCube.update();
 
-        //cube.rotateM(TurnDirection.CLOCKWISE, LayerNotation.M);
+        cube.scrambleCube();
 
         displayCube.update();
-        //cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
     }
 
 }
