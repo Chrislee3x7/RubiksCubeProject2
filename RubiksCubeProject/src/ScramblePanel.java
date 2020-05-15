@@ -44,7 +44,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == resetCubeButton) {
-
+            cube.reset();
         }
         else if (e.getSource() == scrambleTextButton) {
             cube.scrambleCube();
