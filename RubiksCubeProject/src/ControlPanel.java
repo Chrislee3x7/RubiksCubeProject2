@@ -14,8 +14,8 @@ public class ControlPanel extends JPanel {
 
     private GridLayout gridLayout;
 
-    private static String[] allNotation = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'",
-            "M", "S", "E", "M'", "S'", "E'", "x", "y", "z", "x'", "y'", "z'"};
+    private static String[] allNotation = {"U", "L", "F", "R", "U'", "L'", "F'", "R'", "B", "D", "M", "S",
+            "B'", "D'", "M'", "S'", "E", "x", "y", "z", "E'", "x'", "y'", "z'"};
 
     public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
 //
@@ -83,7 +83,7 @@ public class ControlPanel extends JPanel {
 
     public ControlPanel(Cube cube) {
         setPreferredSize(new Dimension(WIDTH, HEIGHT + 50));
-        gridLayout = new GridLayout(8,3);
+        gridLayout = new GridLayout(6,4);
         setLayout(gridLayout);
 
         this.cube = cube;

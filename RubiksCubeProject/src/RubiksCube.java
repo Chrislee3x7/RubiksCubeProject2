@@ -35,6 +35,7 @@ public class RubiksCube {
 
         cube.scrambleCube();
 
+
         displayCube.update();
     }
 

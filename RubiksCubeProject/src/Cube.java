@@ -10,6 +10,7 @@ public class Cube {
     private int frontFaceIndex;
     private int rightFaceIndex;
     private DisplayCube displayCube;
+    private String currentScramble;
 
 
     public Cube() {
@@ -25,6 +26,9 @@ public class Cube {
         upFaceIndex = 0;
         frontFaceIndex = 2;
         rightFaceIndex = 3;
+
+        currentScramble = "No Scramble";
+        System.out.println(currentScramble);
     }
 
     public CubeFace[] getCubeFaceArray() {
@@ -47,8 +51,14 @@ public class Cube {
         return displayCube;
     }
 
+    public String getCurrentScramble() {
+        System.out.println(currentScramble+ "pp");
+        return currentScramble;
+    }
+
     public void scrambleCube() {
         StringBuilder scramble = scrambleGenerator();
+        currentScramble = scramble.toString();
         while (scramble.length() > 0) {
             String currentMove = scramble.substring(0, 1);
             if(scramble.substring(0, 1).equals(" ")) {
@@ -58,7 +68,6 @@ public class Cube {
                 preformMove(currentMove);
                 scramble.replace(0, 1, "");
             }
-
         }
     }
 
@@ -68,7 +77,7 @@ public class Cube {
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
 
-    public StringBuilder scrambleGenerator () {
+    private StringBuilder scrambleGenerator () {
         int randomNumOfMoves = (int) (Math.random() * 5 + 26);
         StringBuilder scrambleNotation = new StringBuilder();
         int i = 0;
@@ -175,7 +184,7 @@ public class Cube {
 
     }
 
-    public void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
+    private void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
         switch (layerNotation) {
             case Z:
                 switch (turnDirection) {
@@ -222,19 +231,19 @@ public class Cube {
         }
     }
 
-    public void rotateSide(LayerNotation layerNotation, TurnDirection turnDirection) {
+    private void rotateSide(LayerNotation layerNotation, TurnDirection turnDirection) {
         //System.out.println("Trying to rotate layer");
         rotateAllEdges(getFaceIndex(layerNotation), turnDirection);
         rotateAllCorners(getFaceIndex(layerNotation), turnDirection);
     }
 
-    public void rotateSide(int faceIndex, TurnDirection turnDirection) {
+    private void rotateSide(int faceIndex, TurnDirection turnDirection) {
         //System.out.println("Trying to rotate layer");
         rotateAllEdges(faceIndex, turnDirection);
         rotateAllCorners(faceIndex, turnDirection);
     }
 
-    public int getFaceIndex(LayerNotation layerNotation) {
+    private int getFaceIndex(LayerNotation layerNotation) {
         int returnValue = -1;
         switch (layerNotation) {
             case U:
@@ -277,7 +286,7 @@ public class Cube {
         return returnValue;
     }
 
-    public void rotateMiddleLayer(LayerNotation layerNotation, TurnDirection turnDirection) {
+    private void rotateMiddleLayer(LayerNotation layerNotation, TurnDirection turnDirection) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
         int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
         int oppositeRightFaceIndex = getOppositeFaceColor(rightFaceIndex);
@@ -357,6 +366,8 @@ public class Cube {
         }
 
     }
+
+
 
     private void switchFourMiddleBottomAndRightEdges (TurnDirection turnDirection, LayerNotation layerNotation) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
@@ -542,28 +553,6 @@ public class Cube {
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker6);
                 break;
         }
-    }
-
-    private List<StickerLocation> fourCornersLocationLeft(CubeFace cubeFace) {
-        List<StickerLocation> cornersStickerLocationsLeft = new ArrayList<>();
-        for (int i = 0; i < 9; i = i + 2) {
-            if (i == 4) {
-                continue;
-            }
-            cornersStickerLocationsLeft.add(getLeftCornerStickerIndex(cubeFace.getSticker(i).getStickerLocation()));
-        }
-        return cornersStickerLocationsLeft;
-    }
-
-    private List<StickerLocation> fourCornersLocationRight(CubeFace cubeFace) {
-        List<StickerLocation> cornersStickerLocationsRight = new ArrayList<>();
-        for (int i = 0; i < 9; i = i + 2) {
-            if (i == 4) {
-                continue;
-            }
-            cornersStickerLocationsRight.add(getRightCornerStickerIndex(cubeFace.getSticker(i).getStickerLocation()));
-        }
-        return cornersStickerLocationsRight;
     }
 
     private StickerLocation getLeftCornerStickerIndex(StickerLocation stickerLocation) {
@@ -857,133 +846,4 @@ public class Cube {
         return cubeFaceArray[faceIndex].getSticker(stickerIndex).getStickerLocation();
     }
 
-    private StickerLocation[] getOtherCornersStickersIndex(StickerLocation stickerLocation) {
-        //first index is for placing which sticker since there are 2
-        //second index is for the sticker
-        int faceIndex = stickerLocation.getFaceIndex();
-        int stickerIndex = stickerLocation.getStickerIndex();
-        StickerLocation[] stickerLocations = new StickerLocation[2];
-        switch (faceIndex) {
-            case 0:
-                switch (stickerIndex) {
-                    case 0:
-                        //first other sticker
-                        stickerLocations[0] = getStickerLocation(1, 0);
-                        //second other sticker
-                        stickerLocations[0] = getStickerLocation(4, 2);
-                        return stickerLocations;
-                    case 2:
-                        //first other sticker
-                        stickerLocations[0] = getStickerLocation(3, 2);
-                        //second other sticker
-                        stickerLocations[0] = getStickerLocation(4, 0);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(1, 2);
-                        stickerLocations[0] = getStickerLocation(3, 0);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(2, 2);
-                        stickerLocations[0] = getStickerLocation(3, 0);
-                        return stickerLocations;
-                }
-            case 1:
-                switch (stickerIndex) {
-                    case 0:
-                        stickerLocations[0] = getStickerLocation(0, 0);
-                        stickerLocations[0] = getStickerLocation(4, 2);
-                        return stickerLocations;
-                    case 2:
-                        stickerLocations[0] = getStickerLocation(0, 6);
-                        stickerLocations[0] = getStickerLocation(2, 0);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(4, 8);
-                        stickerLocations[0] = getStickerLocation(5, 6);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(3, 6);
-                        stickerLocations[0] = getStickerLocation(5, 0);
-                        return stickerLocations;
-                }
-            case 2:
-                switch (stickerIndex) {
-                    case 0:
-                        stickerLocations[0] = getStickerLocation(0, 6);
-                        stickerLocations[0] = getStickerLocation(1, 2);
-                        return stickerLocations;
-                    case 2:
-                        stickerLocations[0] = getStickerLocation(0, 8);
-                        stickerLocations[0] = getStickerLocation(3, 0);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(1, 8);
-                        stickerLocations[0] = getStickerLocation(5, 0);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(4, 6);
-                        stickerLocations[0] = getStickerLocation(5, 2);
-                        return stickerLocations;
-                }
-            case 3:
-                switch (stickerIndex) {
-                    case 0:
-                        stickerLocations[0] = getStickerLocation(0, 8);
-                        stickerLocations[0] = getStickerLocation(2, 2);
-                        return stickerLocations;
-                    case 2:
-                        stickerLocations[0] = getStickerLocation(0, 2);
-                        stickerLocations[0] = getStickerLocation(4, 0);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(2, 8);
-                        stickerLocations[0] = getStickerLocation(5, 2);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(4, 6);
-                        stickerLocations[0] = getStickerLocation(5, 8);
-                        return stickerLocations;
-                }
-            case 4:
-                switch (stickerIndex) {
-                    case 0:
-                        stickerLocations[0] = getStickerLocation(0, 2);
-                        stickerLocations[0] = getStickerLocation(4, 2);
-                        return stickerLocations;
-                    case 2:
-                        stickerLocations[0] = getStickerLocation(0, 0);
-                        stickerLocations[0] = getStickerLocation(1, 0);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(3, 8);
-                        stickerLocations[0] = getStickerLocation(5, 8);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(1, 6);
-                        stickerLocations[0] = getStickerLocation(5, 6);
-                        return stickerLocations;
-                }
-            case 5:
-                switch (stickerIndex) {
-                    case 0:
-                        stickerLocations[0] = getStickerLocation(1, 8);
-                        stickerLocations[0] = getStickerLocation(2, 6);
-                        return stickerLocations;
-                    case 2:
-                        stickerLocations[0] = getStickerLocation(2, 8);
-                        stickerLocations[0] = getStickerLocation(3, 6);
-                        return stickerLocations;
-                    case 6:
-                        stickerLocations[0] = getStickerLocation(1, 6);
-                        stickerLocations[0] = getStickerLocation(4, 8);
-                        return stickerLocations;
-                    case 8:
-                        stickerLocations[0] = getStickerLocation(3, 8);
-                        stickerLocations[0] = getStickerLocation(4, 6);
-                        return stickerLocations;
-                }
-        }
-        return null;
-
-    }
 }
