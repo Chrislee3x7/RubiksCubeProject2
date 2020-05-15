@@ -2,41 +2,43 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 
 public class ScramblePanel extends JPanel implements ActionListener {
 
     private String currentScramble;
 
-    private JLabel scrambleText;
+    private JButton scrambleTextButton;
 
     private JButton resetCubeButton;
-
-    private JButton scrambleCubeButton;
 
     private Cube cube;
 
     public ScramblePanel(Cube cube) {
         this.cube = cube;
+        //setBorder(BorderFactory.createLineBorder(Color.BLACK));
         currentScramble = cube.getCurrentScramble();
+
         resetCubeButton = new JButton("Reset");
         resetCubeButton.addActionListener(this);
+        resetCubeButton.setPreferredSize(new Dimension(100, 40));
 
-        scrambleCubeButton = new JButton("Scramble");
-        scrambleCubeButton.addActionListener(this);
-        //scrambleCubeButton.setBounds();
+//        scrambleCubeButton = new JButton("Scramble");
+//        scrambleCubeButton.addActionListener(this);
+//        scrambleCubeButton.setPreferredSize(new Dimension(130, 40));
 
-        scrambleText = new JLabel();
-        scrambleText.setText(currentScramble);
-        scrambleText.setFont(new Font("Hebrew", Font.ITALIC, 25));
-        scrambleText.setHorizontalAlignment(JTextField.LEFT);
-        scrambleText.setBounds(0,0, 100, 40);
+        scrambleTextButton = new JButton(currentScramble);
+        scrambleTextButton.setPreferredSize(new Dimension(900, 40));
+        scrambleTextButton.addActionListener(this);
+        scrambleTextButton.setFont(new Font("Hebrew", Font.ITALIC, 25));
+        scrambleTextButton.setHorizontalAlignment(JButton.CENTER);
 
-        setPreferredSize(new Dimension(200, 40));
-        setBackground(Color.LIGHT_GRAY);
+        //scrambleTextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-        add(scrambleCubeButton);
-        add(scrambleText);
+        //setPreferredSize(new Dimension(200, 40));
+        setBackground(Color.BLACK);
+
+        //setLayout(layout);
+        add(scrambleTextButton);
         add(resetCubeButton);
     }
 
@@ -44,7 +46,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
         if (e.getSource() == resetCubeButton) {
 
         }
-        else if (e.getSource() == scrambleCubeButton) {
+        else if (e.getSource() == scrambleTextButton) {
             cube.scrambleCube();
             updateScramble(cube.getCurrentScramble());
         }
@@ -52,7 +54,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
 
     public void updateScramble(String newScramble) {
         currentScramble = newScramble;
-        scrambleText.setText(newScramble);
+        scrambleTextButton.setText(newScramble);
     }
 
 

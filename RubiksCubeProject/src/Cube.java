@@ -12,6 +12,8 @@ public class Cube {
     private DisplayCube displayCube;
     private String currentScramble;
 
+    public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
+
 
     public Cube() {
 
@@ -88,8 +90,8 @@ public class Cube {
         String temp1 = "";
         String temp2 = "";
         while (i < randomNumOfMoves) {
-            int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
-            String temp = ControlPanel.moveNotations[randomMove];
+            int randomMove = (int) (Math.random() * moveNotations.length);
+            String temp = moveNotations[randomMove];
             // if 3 moves are the same delete i 2 times and replace it with its opposite
             //
 

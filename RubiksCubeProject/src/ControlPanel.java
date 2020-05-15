@@ -12,19 +12,16 @@ public class ControlPanel extends JPanel {
 
     private Cube cube;
 
-    private GridLayout gridLayout;
+    private GridLayout layout;
 
     private static String[] allNotation = {"U", "L", "F", "R", "U'", "L'", "F'", "R'", "B", "D", "M", "S",
             "B'", "D'", "M'", "S'", "E", "x", "y", "z", "E'", "x'", "y'", "z'"};
 
-    public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
-
-
 
     public ControlPanel(Cube cube) {
         setPreferredSize(new Dimension(WIDTH, HEIGHT + 50));
-        gridLayout = new GridLayout(6,4);
-        setLayout(gridLayout);
+        layout = new GridLayout(6, 4);
+        setLayout(layout);
 
         this.cube = cube;
         for (String notationSymbol : allNotation) {
@@ -38,7 +35,7 @@ public class ControlPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        setBackground(Color.LIGHT_GRAY);
+        setBackground(Color.BLACK);
 
 
     }
