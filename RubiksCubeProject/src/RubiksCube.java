@@ -33,8 +33,7 @@ public class RubiksCube {
         window.setVisible(true);
         displayCube.update();
 
-        cube.scrambleCube();
-
+//        cube.scrambleCube();
 
         displayCube.update();
     }

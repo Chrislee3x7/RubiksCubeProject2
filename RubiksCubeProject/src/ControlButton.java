@@ -22,7 +22,6 @@ public class ControlButton extends JButton implements MouseListener {
         controlPanel.sendCommand( moveNotation);
     }
 
-
     public void mouseReleased(MouseEvent e) {
 
     }

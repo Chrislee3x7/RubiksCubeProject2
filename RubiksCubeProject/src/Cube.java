@@ -86,6 +86,8 @@ public class Cube {
         while (i < randomNumOfMoves) {
             int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
             String temp = ControlPanel.moveNotations[randomMove];
+            // if 3 moves are the same delete i 2 times and replace it with its opposite
+            //
 
 //            if((temp1.equals(temp2) && temp1.equals(temp) && !temp1.equals("") && !temp2.equals("")) || (temp2.endsWith("'") && temp.charAt(0) == temp2.charAt(0)) || (temp.endsWith("'") && temp2.charAt(0) == temp.charAt(0))) {
 //                continue;
@@ -100,6 +102,7 @@ public class Cube {
             i++;
         }
         return scrambleNotation;
+
     }
 
     public void preformMove (String commandNotation) {
@@ -366,8 +369,6 @@ public class Cube {
         }
 
     }
-
-
 
     private void switchFourMiddleBottomAndRightEdges (TurnDirection turnDirection, LayerNotation layerNotation) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
