@@ -31,6 +31,9 @@ public class RubiksCube {
         displayCube.update();
 
         cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
+        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
+        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
+        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
         displayCube.update();
 
         //cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);

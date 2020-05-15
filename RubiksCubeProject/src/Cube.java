@@ -186,14 +186,18 @@ public class Cube {
 
         switch (turnDirection) {
             case COUNTERCLOCKWISE:
+                //System.out.println("try turn corners counter-clockwise");
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker6);
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker8);
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker2);
+                break;
 
             case CLOCKWISE:
+                //System.out.println("try turn corners clockwise");
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker2);
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker8);
                 switchTwoCornersOnFace(cornerSticker0, cornerSticker6);
+                break;
         }
     }
 
@@ -387,6 +391,15 @@ public class Cube {
         }
     }
 
+    private void switchTwoEdgesOnFace(StickerLocation stickerLocation1, StickerLocation stickerLocation2) {
+        //gets other sticker location
+        StickerLocation otherStickerLocation1 = getOtherEdgeStickerIndex(stickerLocation1);
+        StickerLocation otherStickerLocation2 = getOtherEdgeStickerIndex(stickerLocation2);
+        //switches both sets of stickers
+        switchTwoStickers(stickerLocation1, stickerLocation2);
+        switchTwoStickers(otherStickerLocation1, otherStickerLocation2);
+    }
+
     private void switchTwoStickers(StickerLocation stickerLocation1, StickerLocation stickerLocation2) {
         int faceIndex1 = stickerLocation1.getFaceIndex();
         int faceIndex2 = stickerLocation2.getFaceIndex();
@@ -399,20 +412,13 @@ public class Cube {
         cubeFaceArray[faceIndex1].setSticker(sticker2, stickerIndex1);
         cubeFaceArray[faceIndex2].setSticker(sticker1, stickerIndex2);
         //sticker locations change when stickers are changed places
-        sticker2.setStickerLocation(sticker1.getStickerLocation());
+        StickerLocation tempStickerLocation1 = sticker1.getStickerLocation();
         sticker1.setStickerLocation(sticker2.getStickerLocation());
-    }
-
-    private void switchTwoEdgesOnFace(StickerLocation stickerLocation1, StickerLocation stickerLocation2) {
-        //gets other sticker location
-        StickerLocation otherStickerLocation1 = getOtherEdgeStickerIndex(stickerLocation1);
-        StickerLocation otherStickerLocation2 = getOtherEdgeStickerIndex(stickerLocation2);
-        //switches both sets of stickers
-        switchTwoStickers(stickerLocation1, stickerLocation2);
-        switchTwoStickers(otherStickerLocation1, otherStickerLocation2);
+        sticker2.setStickerLocation(tempStickerLocation1);
     }
 
     private void switchTwoCornersOnFace(StickerLocation stickerLocation1, StickerLocation stickerLocation2) {
+        //System.out.println("Tried to switch two corners on face");
         StickerLocation otherStickerLocationR1 = getRightCornerStickerIndex(stickerLocation1);
         StickerLocation otherStickerLocationR2 = getRightCornerStickerIndex(stickerLocation2);
         StickerLocation otherStickerLocationL1 = getLeftCornerStickerIndex(stickerLocation1);
