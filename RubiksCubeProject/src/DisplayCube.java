@@ -90,7 +90,7 @@ public class DisplayCube extends JPanel {
         displayCubeFace(g, cube.getFrontFaceIndex(), LayerNotation.FRONT);
         displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.RIGHT);
 
-        g.fillPolygon(makeUpFaceSticker(2, 2));
+        //g.fillPolygon(makeUpFaceSticker(2, 2));
 
 
 //        g.fillPolygon(makeUpFaceSticker(0, 0));
