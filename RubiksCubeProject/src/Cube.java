@@ -51,32 +51,7 @@ public class Cube {
     }
 
     //S, E, or M move
-    public void rotateM(TurnDirection turnDirection) {
-        int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
-        int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
-
-        switch (turnDirection) {
-            case CLOCKWISE:
-                //switches Centerpiece
-                switchTwoStickers(cubeFaceArray[frontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(upFaceIndex)].getSticker(4).getStickerLocation());
-                switchTwoStickers(cubeFaceArray[upFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeFrontFaceIndex)].getSticker(4).getStickerLocation());
-                switchTwoStickers(cubeFaceArray[oppositeFrontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeUpFaceIndex)].getSticker(4).getStickerLocation());
-                //switch top edges
-                switchFourMiddleTopEdges(turnDirection);
-                switchFourMiddleBottomEdges(turnDirection);
-
-
-            case COUNTERCLOCKWISE:
-                //switches Centerpiece
-                switchTwoStickers(cubeFaceArray[oppositeFrontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[upFaceIndex].getSticker(4).getStickerLocation());
-                switchTwoStickers(cubeFaceArray[upFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[frontFaceIndex].getSticker(4).getStickerLocation());
-                switchTwoStickers(cubeFaceArray[frontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[oppositeUpFaceIndex].getSticker(4).getStickerLocation());
-                //switch top edges
-                switchFourMiddleTopEdges(turnDirection);
-                switchFourMiddleBottomEdges(turnDirection);
-        }
-    }
-    public void rotateM(TurnDirection turnDirection, LayerNotation layerNotation) {
+    public void rotateMiddleLayer(TurnDirection turnDirection, LayerNotation layerNotation) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
         int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
         int oppositeRightFaceIndex = getOppositeFaceColor(rightFaceIndex);
@@ -86,12 +61,13 @@ public class Cube {
                 switch (turnDirection) {
                     case CLOCKWISE:
                         //switches Centerpiece
-                        switchTwoStickers(cubeFaceArray[frontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(upFaceIndex)].getSticker(4).getStickerLocation());
-                        switchTwoStickers(cubeFaceArray[upFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeFrontFaceIndex)].getSticker(4).getStickerLocation());
-                        switchTwoStickers(cubeFaceArray[oppositeFrontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeUpFaceIndex)].getSticker(4).getStickerLocation());
+                        switchTwoStickers(cubeFaceArray[rightFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(frontFaceIndex)].getSticker(4).getStickerLocation());
+                        switchTwoStickers(cubeFaceArray[frontFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeRightFaceIndex)].getSticker(4).getStickerLocation());
+                        switchTwoStickers(cubeFaceArray[oppositeRightFaceIndex].getSticker(4).getStickerLocation(), cubeFaceArray[getOppositeFaceColor(oppositeFrontFaceIndex)].getSticker(4).getStickerLocation());
                         //switch top edges
                         switchFourMiddleTopEdges(turnDirection);
                         switchFourMiddleBottomEdges(turnDirection);
+                        break;
 
 
                     case COUNTERCLOCKWISE:
@@ -102,6 +78,7 @@ public class Cube {
                         //switch top edges
                         switchFourMiddleTopEdges(turnDirection);
                         switchFourMiddleBottomEdges(turnDirection);
+                        break;
                 }
             case M:
                 switch (turnDirection) {
@@ -113,6 +90,7 @@ public class Cube {
                         //switch top edges
                         switchFourMiddleTopEdges(turnDirection);
                         switchFourMiddleBottomEdges(turnDirection);
+                        break;
 
 
                     case COUNTERCLOCKWISE:
@@ -123,6 +101,7 @@ public class Cube {
                         //switch top edges
                         switchFourMiddleTopEdges(turnDirection);
                         switchFourMiddleBottomEdges(turnDirection);
+                        break;
             }
         }
 
