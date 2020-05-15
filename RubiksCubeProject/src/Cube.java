@@ -92,19 +92,16 @@ public class Cube {
         while (i < randomNumOfMoves) {
             int randomMove = (int) (Math.random() * moveNotations.length);
             String temp = moveNotations[randomMove];
-            // if 3 moves are the same delete i 2 times and replace it with its opposite
+            //if 2 moves are the same delete i once and replace both moves with "move"2
+
+            // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
+            // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
+
+
+
+            // if 2 opposite notations, remove both and i - 2
+
             //
-
-//            if((temp1.equals(temp2) && temp1.equals(temp) && !temp1.equals("") && !temp2.equals("")) || (temp2.endsWith("'") && temp.charAt(0) == temp2.charAt(0)) || (temp.endsWith("'") && temp2.charAt(0) == temp.charAt(0))) {
-//                continue;
-//            }
-//            if (temp1 .equals(temp) && temp2.equals(temp) &&  )
-//            if(!temp1.equals("")){
-//                temp2 = temp1;
-//            }
-//            temp1 = temp;
-
-            // if 3 moves are the same delete i 2 times and replace it with its opposite
             scrambleNotation.append(temp + " ");
             i++;
         }
@@ -193,8 +190,16 @@ public class Cube {
         displayCube.update();
 
     }
-    private void reset () {
 
+    private void reset () {
+        cubeFaceArray[0] = new CubeFace(StickerColor.WHITE, 0);
+        cubeFaceArray[1] = new CubeFace(StickerColor.ORANGE, 1);
+        cubeFaceArray[2] = new CubeFace(StickerColor.GREEN, 2);
+        cubeFaceArray[3] = new CubeFace(StickerColor.RED, 3);
+        cubeFaceArray[4] = new CubeFace(StickerColor.BLUE, 4);
+        cubeFaceArray[5] = new CubeFace(StickerColor.YELLOW, 5);
+
+        displayCube.update();
     }
 
     private void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
