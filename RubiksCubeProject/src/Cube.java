@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
 public class Cube {
 
     private CubeFace[] cubeFaceArray;
@@ -95,7 +90,6 @@ public class Cube {
         StringBuilder scrambleNotation = new StringBuilder();
         int i = 0;
         while (i < randomNumOfMoves) {
-<<<<<<< HEAD
             int randomMove = (int) (Math.random() * moveNotations.length);
             String temp = moveNotations[randomMove];
             // if 3 moves are the same delete i 2 times and replace it with its opposite
@@ -109,10 +103,6 @@ public class Cube {
 //                temp2 = temp1;
 //            }
 //            temp1 = temp;
-=======
-            int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
-            String temp = ControlPanel.moveNotations[randomMove];
->>>>>>> 0c8068d99f12c4a1f830bd03f293b023fa071cc5
 
             // if 3 moves are the same delete i 2 times and replace it with its opposite
             scrambleNotation.append(temp + " ");
@@ -201,6 +191,9 @@ public class Cube {
                 break;
         }
         displayCube.update();
+
+    }
+    private void reset () {
 
     }
 
