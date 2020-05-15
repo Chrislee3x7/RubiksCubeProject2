@@ -44,14 +44,61 @@ public class Cube {
     //because they are attached to the same piece
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
+
+    public void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
+        switch (layerNotation) {
+            case Z:
+                switch (turnDirection) {
+                    case CLOCKWISE:
+                        rotateSideLayer(frontFaceIndex, turnDirection);
+                        rotateMiddleLayer(LayerNotation.S, turnDirection);
+                        rotateSideLayer(getOppositeFaceColor(frontFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        break;
+                    case COUNTERCLOCKWISE:
+                        rotateSideLayer(frontFaceIndex, turnDirection);
+                        rotateMiddleLayer(LayerNotation.S, turnDirection);
+                        rotateSideLayer(getOppositeFaceColor(frontFaceIndex), TurnDirection.CLOCKWISE);
+                        break;
+                }
+                break;
+            case Y:
+                switch (turnDirection) {
+                    case CLOCKWISE:
+                        rotateSideLayer(upFaceIndex, TurnDirection.CLOCKWISE);
+                        rotateMiddleLayer(LayerNotation.E, TurnDirection.COUNTERCLOCKWISE);
+                        rotateSideLayer(getOppositeFaceColor(upFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        break;
+                    case COUNTERCLOCKWISE:
+                        rotateSideLayer(upFaceIndex, TurnDirection.COUNTERCLOCKWISE);
+                        rotateMiddleLayer(LayerNotation.E, TurnDirection.CLOCKWISE);
+                        rotateSideLayer(getOppositeFaceColor(upFaceIndex), TurnDirection.CLOCKWISE);
+                        break;
+                }
+                break;
+            case X:
+                switch (turnDirection) {
+                    case CLOCKWISE:
+                        rotateSideLayer(rightFaceIndex, TurnDirection.CLOCKWISE);
+                        rotateMiddleLayer(LayerNotation.M, TurnDirection.COUNTERCLOCKWISE);
+                        rotateSideLayer(getOppositeFaceColor(rightFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        break;
+                    case COUNTERCLOCKWISE:
+                        rotateSideLayer(rightFaceIndex, TurnDirection.COUNTERCLOCKWISE);
+                        rotateMiddleLayer(LayerNotation.M, TurnDirection.CLOCKWISE);
+                        rotateSideLayer(getOppositeFaceColor(rightFaceIndex), TurnDirection.CLOCKWISE);
+                        break;
+                }
+                break;
+        }
+    }
+
     public void rotateSideLayer(int faceIndex, TurnDirection turnDirection) {
         //System.out.println("Trying to rotate layer");
         rotateAllEdges(faceIndex, turnDirection);
         rotateAllCorners(faceIndex, turnDirection);
     }
 
-    //S, E, or M move
-    public void rotateMiddleLayer(TurnDirection turnDirection, LayerNotation layerNotation) {
+    public void rotateMiddleLayer(LayerNotation layerNotation, TurnDirection turnDirection) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
         int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
         int oppositeRightFaceIndex = getOppositeFaceColor(rightFaceIndex);
@@ -293,7 +340,6 @@ public class Cube {
         }
         return returnOppositeFaceIndex;
     }
-
 
     private void rotateAllCorners(int faceIndex, TurnDirection turnDirection) {
 
@@ -761,6 +807,4 @@ public class Cube {
         return null;
 
     }
-
-
 }
