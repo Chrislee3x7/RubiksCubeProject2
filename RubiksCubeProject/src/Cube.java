@@ -29,7 +29,7 @@ public class Cube {
         frontFaceIndex = 2;
         rightFaceIndex = 3;
 
-        currentScramble = "No Scramble";
+        currentScramble = "Click Me To Scramble";
         //System.out.println("Immideate call" + getCurrentScramble());
     }
 
@@ -64,13 +64,20 @@ public class Cube {
         //System.out.println(":" + scramble.toString());
         //System.out.println(currentScramble + "ohno");
         while (scramble.length() > 0) {
-            String currentMove = scramble.substring(0, 1);
+            int indexOfFirstSpace = 0;
+            for (int i = 0; i < scramble.length(); i++) {
+                if(scramble.substring(i, i + 1).equals(" ")) {
+                    indexOfFirstSpace = i;
+                    break;
+                }
+            }
+            String currentMove = scramble.substring(0, indexOfFirstSpace);
             if(scramble.substring(0, 1).equals(" ")) {
                 scramble.replace(0, 1, "");
             }
             else {
                 preformMove(currentMove);
-                scramble.replace(0, 1, "");
+                scramble.replace(0, indexOfFirstSpace, "");
             }
         }
         //perform move updates cube
@@ -87,9 +94,8 @@ public class Cube {
         int randomNumOfMoves = (int) (Math.random() * 5 + 20);
         StringBuilder scrambleNotation = new StringBuilder();
         int i = 0;
-        String temp1 = "";
-        String temp2 = "";
         while (i < randomNumOfMoves) {
+<<<<<<< HEAD
             int randomMove = (int) (Math.random() * moveNotations.length);
             String temp = moveNotations[randomMove];
             // if 3 moves are the same delete i 2 times and replace it with its opposite
@@ -103,7 +109,12 @@ public class Cube {
 //                temp2 = temp1;
 //            }
 //            temp1 = temp;
+=======
+            int randomMove = (int) (Math.random() * ControlPanel.moveNotations.length);
+            String temp = ControlPanel.moveNotations[randomMove];
+>>>>>>> 0c8068d99f12c4a1f830bd03f293b023fa071cc5
 
+            // if 3 moves are the same delete i 2 times and replace it with its opposite
             scrambleNotation.append(temp + " ");
             i++;
         }
