@@ -371,7 +371,7 @@ public class Cube {
                     case 6:
                         return getStickerLocation(5, 8);
                     case 8:
-                        return getStickerLocation(1, 8);
+                        return getStickerLocation(1, 6);
                 }
             case 5:
                 switch (stickerIndex) {
