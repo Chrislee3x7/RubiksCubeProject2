@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseListener;
 
 public class ControlPanel extends JPanel {
 
@@ -47,59 +46,7 @@ public class ControlPanel extends JPanel {
     }
 
     public void sendCommand(String commandNotation) {
-        switch (commandNotation) {
-            case "U":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "U'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "L":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "L'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "F":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "F'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "R":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "R'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "B":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "B'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "D":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.CLOCKWISE);
-                break;
-            case "D'":
-                cube.rotateSideLayer(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
-                break;
-            case "M":
-                cube.rotateMiddleLayer();
-            case "M'":
-            case "S":
-            case "S'":
-            case "E":
-            case "E'":
-            case "x":
-            case "x'":
-            case "y":
-            case "y'":
-            case "z":
-            case "z'":
-
-        }
-        System.out.println(commandNotation);
+        cube.preformMove(commandNotation);
     }
 
     public void paintComponent(Graphics g) {

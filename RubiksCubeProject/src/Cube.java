@@ -7,9 +7,11 @@ public class Cube {
     private int upFaceIndex;
     private int frontFaceIndex;
     private int rightFaceIndex;
+    private DisplayCube displayCube;
 
     public Cube() {
 
+        this.displayCube = new DisplayCube(this);
         cubeFaceArray = new CubeFace[6];
         cubeFaceArray[0] = new CubeFace(StickerColor.WHITE, 0);
         cubeFaceArray[1] = new CubeFace(StickerColor.ORANGE, 1);
@@ -38,6 +40,10 @@ public class Cube {
         return rightFaceIndex;
     }
 
+    public DisplayCube getDisplayCube() {
+        return displayCube;
+    }
+
 
     //basically all stickers of the layer being rotated must move.
     //each sticker (except center) has "other" sticker(s) that must follow it
@@ -45,57 +51,185 @@ public class Cube {
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
 
+    public void preformMove (String commandNotation) {
+        switch (commandNotation) {
+            case "U":
+                rotateSide(LayerNotation.U, TurnDirection.CLOCKWISE);
+                break;
+            case "U'":
+                rotateSide(LayerNotation.U, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "L":
+                rotateSide(LayerNotation.L, TurnDirection.CLOCKWISE);
+                break;
+            case "L'":
+                rotateSide(LayerNotation.L, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "F":
+                rotateSide(LayerNotation.F, TurnDirection.CLOCKWISE);
+                break;
+            case "F'":
+                rotateSide(LayerNotation.F, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "R":
+                rotateSide(LayerNotation.R, TurnDirection.CLOCKWISE);
+                break;
+            case "R'":
+                rotateSide(LayerNotation.R, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "B":
+                rotateSide(LayerNotation.B, TurnDirection.CLOCKWISE);
+                break;
+            case "B'":
+                rotateSide(LayerNotation.B, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "D":
+                rotateSide(LayerNotation.D, TurnDirection.CLOCKWISE);
+                break;
+            case "D'":
+                rotateSide(LayerNotation.D, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "M":
+                rotateMiddleLayer(LayerNotation.M, TurnDirection.CLOCKWISE);
+                break;
+            case "M'":
+                rotateMiddleLayer(LayerNotation.M, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "S":
+                rotateMiddleLayer(LayerNotation.S, TurnDirection.CLOCKWISE);
+                break;
+            case "S'":
+                rotateMiddleLayer(LayerNotation.S, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "E":
+                rotateMiddleLayer(LayerNotation.E, TurnDirection.CLOCKWISE);
+                break;
+            case "E'":
+                rotateMiddleLayer(LayerNotation.E, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "x":
+                rotateCube(LayerNotation.X, TurnDirection.CLOCKWISE);
+                break;
+            case "x'":
+                rotateCube(LayerNotation.X, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "y":
+                rotateCube(LayerNotation.Y, TurnDirection.CLOCKWISE);
+                break;
+            case "y'":
+                rotateCube(LayerNotation.Y, TurnDirection.COUNTERCLOCKWISE);
+                break;
+            case "z":
+                rotateCube(LayerNotation.Z, TurnDirection.CLOCKWISE);
+                break;
+            case "z'":
+                rotateCube(LayerNotation.Z, TurnDirection.COUNTERCLOCKWISE);
+                break;
+        }
+        displayCube.update();
+
+    }
+
     public void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
         switch (layerNotation) {
             case Z:
                 switch (turnDirection) {
                     case CLOCKWISE:
-                        rotateSideLayer(frontFaceIndex, turnDirection);
+                        rotateSide(frontFaceIndex, turnDirection);
                         rotateMiddleLayer(LayerNotation.S, turnDirection);
-                        rotateSideLayer(getOppositeFaceColor(frontFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        rotateSide(getOppositeFaceColor(frontFaceIndex), TurnDirection.COUNTERCLOCKWISE);
                         break;
                     case COUNTERCLOCKWISE:
-                        rotateSideLayer(frontFaceIndex, turnDirection);
+                        rotateSide(frontFaceIndex, turnDirection);
                         rotateMiddleLayer(LayerNotation.S, turnDirection);
-                        rotateSideLayer(getOppositeFaceColor(frontFaceIndex), TurnDirection.CLOCKWISE);
+                        rotateSide(getOppositeFaceColor(frontFaceIndex), TurnDirection.CLOCKWISE);
                         break;
                 }
                 break;
             case Y:
                 switch (turnDirection) {
                     case CLOCKWISE:
-                        rotateSideLayer(upFaceIndex, TurnDirection.CLOCKWISE);
+                        rotateSide(upFaceIndex, TurnDirection.CLOCKWISE);
                         rotateMiddleLayer(LayerNotation.E, TurnDirection.COUNTERCLOCKWISE);
-                        rotateSideLayer(getOppositeFaceColor(upFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        rotateSide(getOppositeFaceColor(upFaceIndex), TurnDirection.COUNTERCLOCKWISE);
                         break;
                     case COUNTERCLOCKWISE:
-                        rotateSideLayer(upFaceIndex, TurnDirection.COUNTERCLOCKWISE);
+                        rotateSide(upFaceIndex, TurnDirection.COUNTERCLOCKWISE);
                         rotateMiddleLayer(LayerNotation.E, TurnDirection.CLOCKWISE);
-                        rotateSideLayer(getOppositeFaceColor(upFaceIndex), TurnDirection.CLOCKWISE);
+                        rotateSide(getOppositeFaceColor(upFaceIndex), TurnDirection.CLOCKWISE);
                         break;
                 }
                 break;
             case X:
                 switch (turnDirection) {
                     case CLOCKWISE:
-                        rotateSideLayer(rightFaceIndex, TurnDirection.CLOCKWISE);
+                        rotateSide(rightFaceIndex, TurnDirection.CLOCKWISE);
                         rotateMiddleLayer(LayerNotation.M, TurnDirection.COUNTERCLOCKWISE);
-                        rotateSideLayer(getOppositeFaceColor(rightFaceIndex), TurnDirection.COUNTERCLOCKWISE);
+                        rotateSide(getOppositeFaceColor(rightFaceIndex), TurnDirection.COUNTERCLOCKWISE);
                         break;
                     case COUNTERCLOCKWISE:
-                        rotateSideLayer(rightFaceIndex, TurnDirection.COUNTERCLOCKWISE);
+                        rotateSide(rightFaceIndex, TurnDirection.COUNTERCLOCKWISE);
                         rotateMiddleLayer(LayerNotation.M, TurnDirection.CLOCKWISE);
-                        rotateSideLayer(getOppositeFaceColor(rightFaceIndex), TurnDirection.CLOCKWISE);
+                        rotateSide(getOppositeFaceColor(rightFaceIndex), TurnDirection.CLOCKWISE);
                         break;
                 }
                 break;
         }
     }
 
-    public void rotateSideLayer(int faceIndex, TurnDirection turnDirection) {
+    public void rotateSide(LayerNotation layerNotation, TurnDirection turnDirection) {
+        //System.out.println("Trying to rotate layer");
+        rotateAllEdges(getFaceIndex(layerNotation), turnDirection);
+        rotateAllCorners(getFaceIndex(layerNotation), turnDirection);
+    }
+
+    public void rotateSide(int faceIndex, TurnDirection turnDirection) {
         //System.out.println("Trying to rotate layer");
         rotateAllEdges(faceIndex, turnDirection);
         rotateAllCorners(faceIndex, turnDirection);
+    }
+
+    public int getFaceIndex(LayerNotation layerNotation) {
+        int returnValue = -1;
+        switch (layerNotation) {
+            case U:
+                returnValue = upFaceIndex;
+                break;
+            case u:
+                returnValue = upFaceIndex;
+                break;
+            case L:
+                returnValue = getOppositeFaceColor(rightFaceIndex);
+                break;
+            case l:
+                returnValue = getOppositeFaceColor(rightFaceIndex);
+                break;
+            case F:
+                returnValue = frontFaceIndex;
+                break;
+            case f:
+                returnValue = frontFaceIndex;
+                break;
+            case R:
+                returnValue = rightFaceIndex;
+                break;
+            case r:
+                returnValue = rightFaceIndex;
+                break;
+            case B:
+                returnValue = getOppositeFaceColor(frontFaceIndex);
+                break;
+            case b:
+                returnValue = getOppositeFaceColor(frontFaceIndex);
+                break;
+            case D:
+                returnValue = getOppositeFaceColor(upFaceIndex);
+                break;
+            case d:
+                returnValue = getOppositeFaceColor(upFaceIndex);
+                break;
+        }
+        return returnValue;
     }
 
     public void rotateMiddleLayer(LayerNotation layerNotation, TurnDirection turnDirection) {

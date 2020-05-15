@@ -19,9 +19,9 @@ public class RubiksCube {
 
         window = new JFrame("Rubik's Cube");
 
-        DisplayCube displayCube = new DisplayCube(cube);
-        ControlPanel controlPanel = new ControlPanel();
+        ControlPanel controlPanel = new ControlPanel(cube);
 
+        DisplayCube displayCube = cube.getDisplayCube();
         window.add(displayCube, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
         window.getContentPane().add(displayCube);
