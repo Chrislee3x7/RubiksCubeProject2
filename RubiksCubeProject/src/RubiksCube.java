@@ -20,23 +20,23 @@ public class RubiksCube {
         window = new JFrame("Rubik's Cube");
 
         DisplayCube displayCube = new DisplayCube(cube);
-        window.getContentPane().add(displayCube);
+        ControlPanel controlPanel = new ControlPanel();
 
-        //window.setBounds(200, 50, 400, 430);
-        window.setBounds(200, 50, 600, 650);
+        window.getContentPane().add(displayCube);
+        window.getContentPane().add(controlPanel);
+
+        window.setLocation(200,50);
+        window.pack();
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(false);
         window.setVisible(true);
 
         displayCube.update();
 
-        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
-        cube.rotateSideLayer(2,TurnDirection.COUNTERCLOCKWISE);
-        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
-        cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
-        displayCube.update();
+        cube.rotateSideLayer(1,TurnDirection.CLOCKWISE);
+        cube.rotateM(TurnDirection.CLOCKWISE, LayerNotation.M);
 
-        //cube.rotateSideLayer(0, TurnDirection.CLOCKWISE);
+
     }
 
 }

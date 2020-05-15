@@ -29,6 +29,7 @@ public class DisplayCube extends JPanel {
     public DisplayCube(Cube cube) {
         background = Toolkit.getDefaultToolkit().getImage("RubiksCubeProject/Background4.jpg");
         this.cube = cube;
+        setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
         //System.out.println(APOTHEM);
     }
 
@@ -42,13 +43,13 @@ public class DisplayCube extends JPanel {
                 // can be changed to take user input later
                 return Color.WHITE;
             case ORANGE:
-                return Color.PINK;
+                return new Color(255, 135, 8);
             case GREEN:
-                return Color.GREEN;
+                return new Color(9, 207, 2);
             case BLUE:
-                return Color.BLUE;
+                return new Color(8, 119, 255);
             case RED:
-                return Color.RED;
+                return new Color(235, 41, 2);
             case YELLOW:
                 return Color.YELLOW;
             default:

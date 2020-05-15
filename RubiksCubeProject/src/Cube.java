@@ -45,7 +45,7 @@ public class Cube {
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
     public void rotateSideLayer(int faceIndex, TurnDirection turnDirection) {
-        System.out.println("Trying to rotate layer");
+        //System.out.println("Trying to rotate layer");
         rotateAllEdges(faceIndex, turnDirection);
         rotateAllCorners(faceIndex, turnDirection);
     }
