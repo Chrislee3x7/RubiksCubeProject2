@@ -9,10 +9,15 @@ public class ToolPanel extends JPanel {
 
     private CubeNet cubeNet;
 
-    public ToolPanel(CubeInfoPanel cubeInfoPanel) {
+    private Cube cube;
+
+    public ToolPanel(CubeInfoPanel cubeInfoPanel, Cube cube) {
         this.cubeInfoPanel = cubeInfoPanel;
+        this.cube = cube;
+
+        setLayout(new BorderLayout());
         cubeNet = new CubeNet(cube);
-        add(cubeNet);
+        add(cubeNet, BorderLayout.EAST);
         setBorder(BorderFactory.createLineBorder(Color.GREEN));
         setPreferredSize(new Dimension(600, 200));
         setOpaque(false);

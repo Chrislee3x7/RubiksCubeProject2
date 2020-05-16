@@ -19,8 +19,10 @@ public class CubeInfoPanel extends JPanel {
 
         displayCube = cube.getDisplayCube();
 
-        toolPanel = new ToolPanel(this);
-        toolPanel.setVisible(false);
+        toolPanel = new ToolPanel(this, cube);
+        toolPanel.setVisible(true);
+
+        
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(650, 700));
