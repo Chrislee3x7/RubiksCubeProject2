@@ -126,7 +126,8 @@ public class Cube {
             //      ex: D U D OR D U' D OR D2 U D' etc.
             //      it is impossible to get D U D2 OR D' U D2, as it will be handled by this case earlier on
             else if (((scrambleNotation.size() > 0 && currentNotation.charAt(0) == previousNotation.charAt(0)) ||
-                    (scrambleNotation.size() > 1 && previousPreviousNotation.charAt(0) == currentNotation.charAt(0)))) {
+                    (scrambleNotation.size() > 1 && previousPreviousNotation.charAt(0) == currentNotation.charAt(0)
+                            && previousNotation.equals(getOppositeSide(String.valueOf(currentNotation.charAt(0))))))) {
                 continue;
             }
 
@@ -139,31 +140,19 @@ public class Cube {
 
     }
 
-    public String getOppositeNotation(String notation) {
+    public String getOppositeSide(String notation) {
         switch (notation) {
             case "R":
-                return "R'";
-            case "U":
-                return "U'";
-            case "L":
-                return "L'";
-            case "D":
-                return "D'";
-            case "B":
-                return "B'";
-            case "F":
-                return "F'";
-            case "R'":
-                return "R";
-            case "U'":
-                return "U";
-            case "L'":
                 return "L";
-            case "D'":
-                return "D";
-            case "B'":
-                return "B";
-            case "F'":
+            case "U":
+                return "D'";
+            case "F":
+                return "B'";
+            case "L":
+                return "R'";
+            case "D":
+                return "U'";
+            case "B":
                 return "F";
         }
         return null;
