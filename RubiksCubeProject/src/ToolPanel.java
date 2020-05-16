@@ -7,7 +7,7 @@ public class ToolPanel extends JPanel {
 
     private CubeInfoPanel cubeInfoPanel;
 
-    private CubeNet cubeNet;
+    private CubeNetPanel cubeNet;
 
     private Cube cube;
 
@@ -16,7 +16,7 @@ public class ToolPanel extends JPanel {
         this.cube = cube;
 
         setLayout(new BorderLayout());
-        cubeNet = new CubeNet(cube);
+        cubeNet = new CubeNetPanel(cube);
         add(cubeNet, BorderLayout.EAST);
         setBorder(BorderFactory.createLineBorder(Color.GREEN));
         setPreferredSize(new Dimension(600, 200));
