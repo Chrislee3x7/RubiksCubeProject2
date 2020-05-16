@@ -17,7 +17,6 @@ public class ScramblePanel extends JPanel implements ActionListener {
         this.cube = cube;
         //setBorder(BorderFactory.createLineBorder(Color.BLACK));
         currentScramble = cube.getCurrentScramble();
-
         resetCubeButton = new JButton("Reset");
         resetCubeButton.addActionListener(this);
         resetCubeButton.setPreferredSize(new Dimension(100, 40));
@@ -45,6 +44,8 @@ public class ScramblePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == resetCubeButton) {
             cube.reset();
+            currentScramble = "Click Me To Scramble";
+            updateScramble(currentScramble);
         }
         else if (e.getSource() == scrambleTextButton) {
             cube.scrambleCube();
