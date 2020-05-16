@@ -34,7 +34,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
         //scrambleTextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         //setPreferredSize(new Dimension(200, 40));
-        setBackground(Color.BLACK);
+        setBackground(new Color(158, 196, 197));
 
         //setLayout(layout);
         add(scrambleTextButton);

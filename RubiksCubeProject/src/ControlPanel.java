@@ -12,8 +12,8 @@ public class ControlPanel extends JPanel {
 
     private GridLayout layout;
 
-    private static String[] allNotation = {"U", "L", "F", "R", "U'", "L'", "F'", "R'", "B", "D", "M", "S",
-            "B'", "D'", "M'", "S'", "E", "x", "y", "z", "E'", "x'", "y'", "z'"};
+    private static String[] allNotation = {"M", "M'", "x", "x'", "E", "E'", "y", "y'", "S", "S'", "z", "z'",
+            "U", "U'", "D", "D'", "F", "F'", "B", "B'", "R", "R'", "L", "L'"};
 
 
     public ControlPanel(Cube cube) {
@@ -33,7 +33,7 @@ public class ControlPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        setBackground(Color.BLACK);
+        //setBackground(Color.BLACK);
 
 
     }
