@@ -18,7 +18,10 @@ public class CubeNetPanel extends JComponent {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.GREEN);
-        g.drawRect(0, 0, 100, 100);
+        
+        g.drawRect(66, 1, 66, 66);
+        g.drawRect(66, 67, 66, 66);
+        g.drawRect(66, 133, 66, 66);
 
     }
 
