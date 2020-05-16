@@ -71,11 +71,17 @@ public class Cube {
         while (i < scramble.size()) {
             String currentMove = scramble.get(i);
             if(currentMove.contains("2")) {
-                preformMove(currentMove.substring(0, 1));
-                preformMove(currentMove.substring(0, 1));
+                performMove(currentMove.substring(0, 1));
+                performMove(currentMove.substring(0, 1));
+
+            }
+            //R', R
+            else if(currentMove.length() == 2) {
+                performMove(currentMove.substring(0, 2));
+
             }
             else {
-                preformMove(currentMove.substring(0, 1));
+                performMove(currentMove.substring(0, 1));
             }
             i++;
         }
@@ -105,28 +111,54 @@ public class Cube {
                 scrambleNotation.remove(scrambleNotation.size() - 1);
                 scrambleNotation.add(rotateSideTwice(currNotation));
                 i--;
+                continue;
             }
+
             // if 2 opposite notations, remove both and i - 2
-            if (currNotation.equals(getOppositeNotation(prevNotation)) && prevNotation.equals(getOppositeNotation(currNotation))) {
+
+            if (currNotation.equals(getOppositeNotation(prevNotation))) {
                 i = i - 2;
                 scrambleNotation.remove(currNotation);
                 scrambleNotation.remove(prevNotation);
+                continue;
             }
 
             // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
             // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
 
+//            if (prevNotation.contains("2") && currNotation.charAt(0) == prevNotation.charAt(0)) {
+//                if(prevNotation.contains("'")) {
+//                    scrambleNotation.add(String.valueOf(currNotation.charAt(0)));
+//                }
+//                else{
+//                    scrambleNotation.add((currNotation + "'"));
+//                }
+//                scrambleNotation.remove(i - 2);
+//                scrambleNotation.remove(i - 3);
+//                i--;
+//                continue;
+//            }
+//            if(currNotation.contains("2") && prevNotation.charAt(0) == currNotation.charAt(0)) {
+//                if(prevNotation.contains("'")) {
+//                    scrambleNotation.add(String.valueOf(prevNotation.charAt(0)));
+//                }
+//                else{
+//                    scrambleNotation.add((prevNotation + "'"));
+//                }
+//                scrambleNotation.remove(i - 2);
+//                scrambleNotation.remove(i - 3);
+//                i--;
+//                continue;
+//            }
 
-
-
-            //
             scrambleNotation.add(currNotation);
-            prevNotation = currNotation;
+            prevNotation = scrambleNotation.get(scrambleNotation.size() - 1);
             i++;
         }
         return scrambleNotation;
 
     }
+
     public String getOppositeNotation(String notation) {
         switch (notation) {
             case "R":
@@ -162,7 +194,7 @@ public class Cube {
         return (layerNotation + "2");
     }
 
-    public void preformMove (String commandNotation) {
+    public void performMove(String commandNotation) {
 //        MoveNotationInfo moveNotationInfo = ControlPanel.moveNotationInfoMap.get(commandNotation);
 //        rotateSide(moveNotationInfo.getLayerNotation(), moveNotationInfo.getTurnDirection());
 

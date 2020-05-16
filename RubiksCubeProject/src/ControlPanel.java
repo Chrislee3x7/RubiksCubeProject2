@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ControlPanel extends JPanel {
 
@@ -30,7 +28,7 @@ public class ControlPanel extends JPanel {
     }
 
     public void sendCommand(String commandNotation) {
-        cube.preformMove(commandNotation);
+        cube.performMove(commandNotation);
     }
 
     public void paintComponent(Graphics g) {
