@@ -53,7 +53,7 @@ public class DisplayCube extends JPanel {
             case YELLOW:
                 return Color.YELLOW;
             default:
-                System.out.println("Bruh where's the color");
+                //System.out.println("Bruh where's the color");
                 return null;
         }
     }

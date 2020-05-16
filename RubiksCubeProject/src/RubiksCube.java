@@ -27,7 +27,7 @@ public class RubiksCube {
         window.add(new ScramblePanel(cube), BorderLayout.SOUTH);
         window.getContentPane().add(displayCube);
 
-        window.setBounds(50, 50, 600, 650);
+        //window.setPreferredSize(new Dimension( 600, 650 ));
         window.pack();
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(false);
