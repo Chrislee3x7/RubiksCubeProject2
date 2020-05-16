@@ -110,84 +110,29 @@ public class Cube {
             int randomMove = (int) (Math.random() * moveNotations.length);
             String currentNotation = moveNotations[randomMove];
 
-
-            if (scrambleNotation.size() <= 1) {
+            //1. if two single turns are same, ex: D D
+            //          replace with D2 (D2 considered 1 move so not a reroll)
+            if (scrambleNotation.size() > 0 && currentNotation.equals(previousNotation)) {
+                scrambleNotation.remove(scrambleNotation.size() - 1);
+                scrambleNotation.add(getDoubleTurnNotation(currentNotation));
                 continue;
             }
-            //1. if two single turns are same, ex: D D
-            //          replace with D2 i-- (D2 considered 1 move so not a reroll)
-            if (currentNotation.length() == 1 && currentNotation.equals(previousNotation)) {
-                scrambleNotation.add(getDoubleTurnNotation(currentNotation));
-                i--;
-            }
             //2a. if two single turns are opposites ex: D D' OR D' D
-            //          remove last i-- (reroll)
+            //          remove last(reroll)
             // 2b. if one double turn and one single turn ex: D2 D OR D2 D'
-            //          delete single turn move i-- (reroll)
+            //          delete single turn move (reroll)
             //      it is impossible to get D D2 OR D' D2, as that will be taken care of in the first case
             // 3. if one single turn and another same single turn or double turn are separated by their opposite
             //      ex: D U D OR D U' D OR D2 U D' etc.
             //      it is impossible to get D U D2 OR D' U D2, as it will be handled by this case earlier on
-            else if ((currentNotation.charAt(0) == previousNotation.charAt(0)) ||
-                    (scrambleNotation.size() > 2
-                            && previousPreviousNotation.charAt(0) == currentNotation.charAt(0))) {
-                scrambleNotation.remove(scrambleNotation.size() - 1);
-                i--;
+            else if (((scrambleNotation.size() > 0 && currentNotation.charAt(0) == previousNotation.charAt(0)) ||
+                    (scrambleNotation.size() > 1 && previousPreviousNotation.charAt(0) == currentNotation.charAt(0)))) {
+                continue;
             }
 
-
-
-            //if 2 moves are the same delete i once and replace both moves with "move"2
-
-//            if (scrambleNotation.size() > 1 && currentNotation.equals(previousNotation)) {
-//                scrambleNotation.remove(scrambleNotation.size() - 2);
-//                scrambleNotation.remove(scrambleNotation.size() - 1);
-//                scrambleNotation.add(getDoubleTurnNotation(currentNotation));
-//                i--;
-//                continue;
-//            }
-//
-//            // if 2 opposite notations, remove both and i - 2
-//
-//            if (currentNotation.equals(getOppositeNotation(previousNotation))) {
-//                i = i - 2;
-//                scrambleNotation.remove(currentNotation);
-//                scrambleNotation.remove(previousNotation);
-//                continue;
-//            }
-//
-//            // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
-//            // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
-//
-//            if (previousNotation.contains("2") && currentNotation.charAt(0) == previousNotation.charAt(0)) {
-//                if (previousNotation.contains("'")) {
-//                    scrambleNotation.add(String.valueOf(currentNotation.charAt(0)));
-//                } else {
-//                    scrambleNotation.add((currentNotation + "'"));
-//                }
-//                scrambleNotation.remove(i - 2);
-//                scrambleNotation.remove(i - 3);
-//                i--;
-//                continue;
-//            }
-//            if (currentNotation.contains("2") && previousNotation.charAt(0) == currentNotation.charAt(0)) {
-//                if (previousNotation.contains("'")) {
-//                    scrambleNotation.add(String.valueOf(previousNotation.charAt(0)));
-//                } else {
-//                    scrambleNotation.add((previousNotation + "'"));
-//                }
-//                scrambleNotation.remove(i - 2);
-//                scrambleNotation.remove(i - 3);
-//                i--;
-//                continue;
-//            }
-
             previousPreviousNotation = previousNotation;
-            //previousNotation = currentNotation;
-
-
+            previousNotation = currentNotation;
             scrambleNotation.add(currentNotation);
-            previousNotation = scrambleNotation.get(scrambleNotation.size() - 1);
             i++;
         }
         return scrambleNotation;
