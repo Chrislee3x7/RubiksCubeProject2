@@ -21,16 +21,21 @@ public class RubiksCube {
 
         ControlPanel controlPanel = new ControlPanel(cube);
 
-        DisplayCube displayCube = cube.getDisplayCube();
-        window.add(displayCube, BorderLayout.WEST);
+
+
+        CubeInfoPanel cubeInfoPanel = new CubeInfoPanel(cube);
+
+        window.add(cubeInfoPanel, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
-        window.add(new ScramblePanel(cube), BorderLayout.SOUTH);
-        window.getContentPane().add(displayCube);
+
+        ScramblePanel scramblePanel = new ScramblePanel(cube);
+        window.add(scramblePanel, BorderLayout.SOUTH);
+        //window.add(displayCube, BorderLayout.NORTH);
 
         //window.setPreferredSize(new Dimension( 600, 650 ));
         window.pack();
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.setResizable(false);
+        window.setResizable(true);
         window.setVisible(true);
 //        displayCube.update();
 
