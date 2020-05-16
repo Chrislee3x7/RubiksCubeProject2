@@ -60,8 +60,9 @@ public class Cube {
         reset();
         List<String> scramble = scrambleGenerator();
         StringBuilder scrambleToString = new StringBuilder();
-        for(int i = 0; i < scramble.size(); i++) {
-            scrambleToString.append(scramble.get(i) + " ");
+        for (int i = 0; i < scramble.size(); i++) {
+            String append = scramble.get(i) + " ";
+            scrambleToString.append(append);
         }
         currentScramble = scrambleToString.toString();
         //System.out.println(":" + scramble.toString());
@@ -99,7 +100,7 @@ public class Cube {
 
             //if 2 moves are the same delete i once and replace both moves with "move"2
 
-            if (scrambleNotation.size() > 0 && currNotation.equals(prevNotation)) {
+            if (scrambleNotation.size() > 1 && currNotation.equals(prevNotation)) {
                 scrambleNotation.remove(scrambleNotation.size() - 2);
                 scrambleNotation.remove(scrambleNotation.size() - 1);
                 scrambleNotation.add(rotateSideTwice(currNotation));
