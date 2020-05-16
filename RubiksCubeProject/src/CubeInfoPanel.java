@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 //contains cubeDisplay, and toolPanel
 public class CubeInfoPanel extends JPanel {
@@ -19,22 +21,25 @@ public class CubeInfoPanel extends JPanel {
 
         displayCube = cube.getDisplayCube();
 
-        toolPanel = new ToolPanel(this, cube);
-        toolPanel.setVisible(true);
+        toolPanel = new ToolPanel(this, cube ,toolPanelButton);
 
-        
+        toolPanelButton = new JButton("Tools");
+        toolPanelButton.setPreferredSize(new Dimension(40,40));
+        toolPanelButton.addActionListener(toolPanel);
 
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(650, 700));
 
-        add(displayCube, BorderLayout.NORTH);
-        add(toolPanel, BorderLayout.SOUTH);
+        add(displayCube);
+        add(toolPanel);
+        add(toolPanelButton);
+        toolPanelButton.setVisible(true);
     }
 
     public void updateDisplayCube() {
+        displayCube.setCubeSpaceAllocated(toolPanel.isOpen());
         displayCube.update();
     }
-
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);

@@ -27,14 +27,21 @@ public class DisplayCube extends JComponent {
     private static final double SHORT_STICKER_GAP = (STICKER_GAP / (Math.sqrt(3))) / 2;
 
 
-    //private Image background;
-
     private Cube cube;
 
     public DisplayCube(Cube cube) {
         this.cube = cube;
         setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION - 100));
         //System.out.println(APOTHEM);
+    }
+
+    public void setCubeSpaceAllocated(boolean toolPanelIsOpen) {
+        if (toolPanelIsOpen) {
+            cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITH_TOOLS;
+        }
+        else {
+            cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITHOUT_TOOLS;
+        }
     }
 
     public void update() {
@@ -64,9 +71,6 @@ public class DisplayCube extends JComponent {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-//        g.drawImage(background, -1300, -900,this);
-        //Background3
-        //g.drawImage(background, -900, -400, this);
 
         Polygon rhombus1 = new Polygon();
         rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
