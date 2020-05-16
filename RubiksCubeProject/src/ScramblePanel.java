@@ -18,6 +18,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
         //setBorder(BorderFactory.createLineBorder(Color.BLACK));
         currentScramble = cube.getCurrentScramble();
         resetCubeButton = new JButton("Reset");
+        resetCubeButton.setFont(new Font("Hebrew", Font.ITALIC, 20));
         resetCubeButton.addActionListener(this);
         resetCubeButton.setPreferredSize(new Dimension(100, 40));
 
