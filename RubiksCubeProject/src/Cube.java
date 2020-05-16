@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cube {
 
     private CubeFace[] cubeFaceArray;
@@ -55,26 +58,25 @@ public class Cube {
 
     public void scrambleCube() {
         reset();
-        StringBuilder scramble = scrambleGenerator();
-        currentScramble = scramble.toString();
+        List<String> scramble = scrambleGenerator();
+        StringBuilder scrambleToString = new StringBuilder();
+        for(int i = 0; i < scramble.size(); i++) {
+            scrambleToString.append(scramble.get(i) + " ");
+        }
+        currentScramble = scrambleToString.toString();
         //System.out.println(":" + scramble.toString());
         //System.out.println(currentScramble + "ohno");
-        while (scramble.length() > 0) {
-            int indexOfFirstSpace = 0;
-            for (int i = 0; i < scramble.length(); i++) {
-                if(scramble.substring(i, i + 1).equals(" ")) {
-                    indexOfFirstSpace = i;
-                    break;
-                }
-            }
-            String currentMove = scramble.substring(0, indexOfFirstSpace);
-            if(scramble.substring(0, 1).equals(" ")) {
-                scramble.replace(0, 1, "");
+        int i = 0;
+        while (i < scramble.size()) {
+            String currentMove = scramble.get(i);
+            if(currentMove.contains("2")) {
+                preformMove(currentMove.substring(0, 1));
+                preformMove(currentMove.substring(0, 1));
             }
             else {
-                preformMove(currentMove);
-                scramble.replace(0, indexOfFirstSpace, "");
+                preformMove(currentMove.substring(0, 1));
             }
+            i++;
         }
         //perform move updates cube
         //displayCube.update();
@@ -86,17 +88,28 @@ public class Cube {
     //so when this method is called, it will move not just the stickers on its own layer,
     //but also the connected stickers.
 
-    private StringBuilder scrambleGenerator () {
+    private List<String> scrambleGenerator () {
         int randomNumOfMoves = (int) (Math.random() * 5 + 20);
-        StringBuilder scrambleNotation = new StringBuilder();
+        List<String> scrambleNotation = new ArrayList<>();
         int i = 0;
+        String prevNotation = "";
         while (i < randomNumOfMoves) {
             int randomMove = (int) (Math.random() * moveNotations.length);
-            String temp = moveNotations[randomMove];
+            String currNotation = moveNotations[randomMove];
+
             //if 2 moves are the same delete i once and replace both moves with "move"2
 
-            if (scrambleNotation.length() > 0) {
-
+            if (scrambleNotation.size() > 0 && currNotation.equals(prevNotation)) {
+                scrambleNotation.remove(scrambleNotation.size() - 2);
+                scrambleNotation.remove(scrambleNotation.size() - 1);
+                scrambleNotation.add(rotateSideTwice(currNotation));
+                i--;
+            }
+            // if 2 opposite notations, remove both and i - 2
+            if (currNotation.equals(getOppositeNotation(prevNotation)) && prevNotation.equals(getOppositeNotation(currNotation))) {
+                i = i - 2;
+                scrambleNotation.remove(currNotation);
+                scrambleNotation.remove(prevNotation);
             }
 
             // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
@@ -104,14 +117,48 @@ public class Cube {
 
 
 
-            // if 2 opposite notations, remove both and i - 2
 
             //
-            scrambleNotation.append(temp + " ");
+            scrambleNotation.add(currNotation);
+            prevNotation = currNotation;
             i++;
         }
         return scrambleNotation;
 
+    }
+    public String getOppositeNotation(String notation) {
+        switch (notation) {
+            case "R":
+                return "R'";
+            case "U":
+                return "U'";
+            case "L":
+                return "L'";
+            case "D":
+                return "D'";
+            case "B":
+                return "B'";
+            case "F":
+                return "F'";
+            case "R'":
+                return "R";
+            case "U'":
+                return "U";
+            case "L'":
+                return "L";
+            case "D'":
+                return "D";
+            case "B'":
+                return "B";
+            case "F'":
+                return "F";
+        }
+        return null;
+    }
+
+    public String rotateSideTwice(String temp) {
+        char layerNotation = temp.charAt(0);
+        return (layerNotation + "2");
     }
 
     public void preformMove (String commandNotation) {
