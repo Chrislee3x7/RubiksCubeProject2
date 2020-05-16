@@ -70,17 +70,16 @@ public class Cube {
         int i = 0;
         while (i < scramble.size()) {
             String currentMove = scramble.get(i);
-            if(currentMove.contains("2")) {
+            if (currentMove.contains("2")) {
                 performMove(currentMove.substring(0, 1));
                 performMove(currentMove.substring(0, 1));
 
             }
             //R', R
-            else if(currentMove.length() == 2) {
+            else if (currentMove.length() == 2) {
                 performMove(currentMove.substring(0, 2));
 
-            }
-            else {
+            } else {
                 performMove(currentMove.substring(0, 1));
             }
             i++;
@@ -92,69 +91,103 @@ public class Cube {
 
     // 1. if two single turns are same, ex: D D
     //          replace with D2 i-- (D2 considered 1 move so not a reroll)
-    // 2a. if two single turns are opposites ex: D D' OR D' D remove last i-- (reroll)
-    // 2b. 
-    // 3. if one double turn and one single turn ex: D2 D OR D2 D' delete single turn move i-- (reroll)
-    //      it is impossible to get D D2 OR D' D2, as that will cause it to go to the first case
-    // 4.
-    private List<String> scrambleGenerator () {
+    // 2a. if two single turns are opposites ex: D D' OR D' D
+    //          remove last i-- (reroll)
+    // 2b. if one double turn and one single turn ex: D2 D OR D2 D'
+    //          delete single turn move i-- (reroll)
+    //      it is impossible to get D D2 OR D' D2, as that will be taken care of in the first case
+    // 3. if one single turn and another same single turn or double turn are separated by their opposite
+    //      ex: D U D OR D U' D OR D2 U D' etc.
+    //      it is impossible to get D U D2 OR D' U D2, as it will be handled by this case earlier on
+
+    private List<String> scrambleGenerator() {
         int randomNumOfMoves = (int) (Math.random() * 5 + 20);
         List<String> scrambleNotation = new ArrayList<>();
         int i = 0;
-        String prevNotation = "";
+        String previousNotation = "";
+        String previousPreviousNotation = "";
         while (i < randomNumOfMoves) {
             int randomMove = (int) (Math.random() * moveNotations.length);
-            String currNotation = moveNotations[randomMove];
+            String currentNotation = moveNotations[randomMove];
+
+
+            if (scrambleNotation.size() <= 1) {
+                continue;
+            }
+            //1. if two single turns are same, ex: D D
+            //          replace with D2 i-- (D2 considered 1 move so not a reroll)
+            if (currentNotation.length() == 1 && currentNotation.equals(previousNotation)) {
+                scrambleNotation.add(getDoubleTurnNotation(currentNotation));
+                i--;
+            }
+            //2a. if two single turns are opposites ex: D D' OR D' D
+            //          remove last i-- (reroll)
+            // 2b. if one double turn and one single turn ex: D2 D OR D2 D'
+            //          delete single turn move i-- (reroll)
+            //      it is impossible to get D D2 OR D' D2, as that will be taken care of in the first case
+            // 3. if one single turn and another same single turn or double turn are separated by their opposite
+            //      ex: D U D OR D U' D OR D2 U D' etc.
+            //      it is impossible to get D U D2 OR D' U D2, as it will be handled by this case earlier on
+            else if ((currentNotation.charAt(0) == previousNotation.charAt(0)) ||
+                    (scrambleNotation.size() > 2
+                            && previousPreviousNotation.charAt(0) == currentNotation.charAt(0))) {
+                scrambleNotation.remove(scrambleNotation.size() - 1);
+                i--;
+            }
+
+
 
             //if 2 moves are the same delete i once and replace both moves with "move"2
 
-            if (scrambleNotation.size() > 1 && currNotation.equals(prevNotation)) {
-                scrambleNotation.remove(scrambleNotation.size() - 2);
-                scrambleNotation.remove(scrambleNotation.size() - 1);
-                scrambleNotation.add(rotateSideTwice(currNotation));
-                i--;
-                continue;
-            }
+//            if (scrambleNotation.size() > 1 && currentNotation.equals(previousNotation)) {
+//                scrambleNotation.remove(scrambleNotation.size() - 2);
+//                scrambleNotation.remove(scrambleNotation.size() - 1);
+//                scrambleNotation.add(getDoubleTurnNotation(currentNotation));
+//                i--;
+//                continue;
+//            }
+//
+//            // if 2 opposite notations, remove both and i - 2
+//
+//            if (currentNotation.equals(getOppositeNotation(previousNotation))) {
+//                i = i - 2;
+//                scrambleNotation.remove(currentNotation);
+//                scrambleNotation.remove(previousNotation);
+//                continue;
+//            }
+//
+//            // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
+//            // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
+//
+//            if (previousNotation.contains("2") && currentNotation.charAt(0) == previousNotation.charAt(0)) {
+//                if (previousNotation.contains("'")) {
+//                    scrambleNotation.add(String.valueOf(currentNotation.charAt(0)));
+//                } else {
+//                    scrambleNotation.add((currentNotation + "'"));
+//                }
+//                scrambleNotation.remove(i - 2);
+//                scrambleNotation.remove(i - 3);
+//                i--;
+//                continue;
+//            }
+//            if (currentNotation.contains("2") && previousNotation.charAt(0) == currentNotation.charAt(0)) {
+//                if (previousNotation.contains("'")) {
+//                    scrambleNotation.add(String.valueOf(previousNotation.charAt(0)));
+//                } else {
+//                    scrambleNotation.add((previousNotation + "'"));
+//                }
+//                scrambleNotation.remove(i - 2);
+//                scrambleNotation.remove(i - 3);
+//                i--;
+//                continue;
+//            }
 
-            // if 2 opposite notations, remove both and i - 2
+            previousPreviousNotation = previousNotation;
+            //previousNotation = currentNotation;
 
-            if (currNotation.equals(getOppositeNotation(prevNotation))) {
-                i = i - 2;
-                scrambleNotation.remove(currNotation);
-                scrambleNotation.remove(prevNotation);
-                continue;
-            }
 
-            // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
-            // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
-
-            if (prevNotation.contains("2") && currNotation.charAt(0) == prevNotation.charAt(0)) {
-                if(prevNotation.contains("'")) {
-                    scrambleNotation.add(String.valueOf(currNotation.charAt(0)));
-                }
-                else{
-                    scrambleNotation.add((currNotation + "'"));
-                }
-                scrambleNotation.remove(i - 2);
-                scrambleNotation.remove(i - 3);
-                i--;
-                continue;
-            }
-            if(currNotation.contains("2") && prevNotation.charAt(0) == currNotation.charAt(0)) {
-                if(prevNotation.contains("'")) {
-                    scrambleNotation.add(String.valueOf(prevNotation.charAt(0)));
-                }
-                else{
-                    scrambleNotation.add((prevNotation + "'"));
-                }
-                scrambleNotation.remove(i - 2);
-                scrambleNotation.remove(i - 3);
-                i--;
-                continue;
-            }
-
-            scrambleNotation.add(currNotation);
-            prevNotation = scrambleNotation.get(scrambleNotation.size() - 1);
+            scrambleNotation.add(currentNotation);
+            previousNotation = scrambleNotation.get(scrambleNotation.size() - 1);
             i++;
         }
         return scrambleNotation;
@@ -191,7 +224,7 @@ public class Cube {
         return null;
     }
 
-    public String rotateSideTwice(String temp) {
+    public String getDoubleTurnNotation(String temp) {
         char layerNotation = temp.charAt(0);
         return (layerNotation + "2");
     }
@@ -278,7 +311,7 @@ public class Cube {
 
     }
 
-    public void reset () {
+    public void reset() {
         cubeFaceArray[0] = new CubeFace(StickerColor.WHITE, 0);
         cubeFaceArray[1] = new CubeFace(StickerColor.ORANGE, 1);
         cubeFaceArray[2] = new CubeFace(StickerColor.GREEN, 2);
@@ -289,7 +322,7 @@ public class Cube {
         displayCube.update();
     }
 
-    private void rotateCube (LayerNotation layerNotation, TurnDirection turnDirection) {
+    private void rotateCube(LayerNotation layerNotation, TurnDirection turnDirection) {
         switch (layerNotation) {
             case Z:
                 switch (turnDirection) {
@@ -471,13 +504,13 @@ public class Cube {
                         switchFourMiddleTopAndLeftEdges(turnDirection, LayerNotation.M);
                         switchFourMiddleBottomAndRightEdges(turnDirection, LayerNotation.M);
                         break;
-            }
-            break;
+                }
+                break;
         }
 
     }
 
-    private void switchFourMiddleBottomAndRightEdges (TurnDirection turnDirection, LayerNotation layerNotation) {
+    private void switchFourMiddleBottomAndRightEdges(TurnDirection turnDirection, LayerNotation layerNotation) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
         int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
         int oppositeRightFaceIndex = getOppositeFaceColor(rightFaceIndex);
@@ -485,12 +518,12 @@ public class Cube {
         StickerLocation upFaceRightEdge = cubeFaceArray[upFaceIndex].getSticker(5).getStickerLocation();
         StickerLocation rightFaceBottomEdge = cubeFaceArray[rightFaceIndex].getSticker(7).getStickerLocation();
         StickerLocation bottomFaceLeftEdge = cubeFaceArray[oppositeUpFaceIndex].getSticker(3).getStickerLocation();
-        StickerLocation leftFaceTopEdge =cubeFaceArray[oppositeRightFaceIndex].getSticker(1).getStickerLocation();
+        StickerLocation leftFaceTopEdge = cubeFaceArray[oppositeRightFaceIndex].getSticker(1).getStickerLocation();
 
         StickerLocation frontFaceRightEdge = cubeFaceArray[frontFaceIndex].getSticker(5).getStickerLocation();
         StickerLocation rightFaceRightEdge = cubeFaceArray[rightFaceIndex].getSticker(5).getStickerLocation();
         StickerLocation backFaceRightEdge = cubeFaceArray[oppositeFrontFaceIndex].getSticker(5).getStickerLocation();
-        StickerLocation leftFaceRightEdge =cubeFaceArray[oppositeRightFaceIndex].getSticker(5).getStickerLocation();
+        StickerLocation leftFaceRightEdge = cubeFaceArray[oppositeRightFaceIndex].getSticker(5).getStickerLocation();
 
         StickerLocation upFaceBottomEdge = cubeFaceArray[upFaceIndex].getSticker(7).getStickerLocation();
         StickerLocation frontFaceBottomEdge = cubeFaceArray[frontFaceIndex].getSticker(7).getStickerLocation();
@@ -545,7 +578,7 @@ public class Cube {
         }
     }
 
-    private void switchFourMiddleTopAndLeftEdges (TurnDirection turnDirection, LayerNotation layerNotation) {
+    private void switchFourMiddleTopAndLeftEdges(TurnDirection turnDirection, LayerNotation layerNotation) {
         int oppositeUpFaceIndex = getOppositeFaceColor(upFaceIndex);
         int oppositeFrontFaceIndex = getOppositeFaceColor(frontFaceIndex);
         int oppositeRightFaceIndex = getOppositeFaceColor(rightFaceIndex);
