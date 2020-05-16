@@ -3,24 +3,29 @@ import java.awt.*;
 
 public class DisplayCube extends JComponent {
 
-    private static final int CUBE_SPACE_ALLOCATED = 550;
+    private int cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITH_TOOLS;
+
+    private static final int CUBE_SPACE_ALLOCATED_WITHOUT_TOOLS = 550;
+
+    private static final int CUBE_SPACE_ALLOCATED_WITH_TOOLS = 500;
 
     private static final int WINDOW_DIMENSION = 650;
 
     private static final int CUBE_OFFSET_FROM_WINDOW_EDGE = 40;
 
-    private static final int CUBE_RADIUS = (CUBE_SPACE_ALLOCATED - 2 * CUBE_OFFSET_FROM_WINDOW_EDGE) / 2;
+    private int CUBE_RADIUS = (cubeSpaceAllocated - 2 * CUBE_OFFSET_FROM_WINDOW_EDGE) / 2;
 
-    private static final double APOTHEM = CUBE_RADIUS * Math.cos(Math.PI / 6);
+    private double APOTHEM = CUBE_RADIUS * Math.cos(Math.PI / 6);
+
+    private double STICKER_DIAGONAL = (2 * APOTHEM - 4 * STICKER_GAP) / 3;
+
+    private double STICKER_LENGTH = (STICKER_DIAGONAL / (Math.sqrt(3)));
 
     //based on up face
     private static final double STICKER_GAP = 10;
 
     private static final double SHORT_STICKER_GAP = (STICKER_GAP / (Math.sqrt(3))) / 2;
 
-    private static final double STICKER_DIAGONAL = (2 * APOTHEM - 4 * STICKER_GAP) / 3;
-
-    private static final double STICKER_LENGTH = (STICKER_DIAGONAL / (Math.sqrt(3)));
 
     //private Image background;
 
@@ -29,8 +34,6 @@ public class DisplayCube extends JComponent {
     public DisplayCube(Cube cube) {
         this.cube = cube;
         setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION - 100));
-
-
         //System.out.println(APOTHEM);
     }
 
@@ -61,26 +64,25 @@ public class DisplayCube extends JComponent {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
 //        g.drawImage(background, -1300, -900,this);
         //Background3
         //g.drawImage(background, -900, -400, this);
 
         Polygon rhombus1 = new Polygon();
-        rhombus1.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2);
-        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS / 2);
-        rhombus1.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS);
-        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS / 2);
+        rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
+        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
+        rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 - CUBE_RADIUS);
+        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
         Polygon rhombus2 = new Polygon();
-        rhombus2.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2);
-        rhombus2.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2 + CUBE_RADIUS);
-        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), CUBE_SPACE_ALLOCATED / 2 + CUBE_RADIUS / 2);
-        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS / 2);
+        rhombus2.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
+        rhombus2.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
+        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
+        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
         Polygon rhombus3 = new Polygon();
-        rhombus3.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2);
-        rhombus3.addPoint(WINDOW_DIMENSION / 2, CUBE_SPACE_ALLOCATED / 2 + CUBE_RADIUS);
-        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), CUBE_SPACE_ALLOCATED / 2 + CUBE_RADIUS / 2);
-        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS / 2);
+        rhombus3.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
+        rhombus3.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
+        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
+        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
 
         g.setColor(Color.BLACK);
         g.fillPolygon(rhombus1);
@@ -126,13 +128,13 @@ public class DisplayCube extends JComponent {
         final double horizontalTranslate = (0.5 * STICKER_GAP + 0.5 * STICKER_DIAGONAL);
         final double verticalTranslate = SHORT_STICKER_GAP + 0.5 * STICKER_LENGTH;
         final double baseX1 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL);
-        final double baseY1 = (CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
+        final double baseY1 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
         final double baseX2 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
-        final double baseY2 = (CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS + 2 * SHORT_STICKER_GAP);
+        final double baseY2 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + 2 * SHORT_STICKER_GAP);
         final double baseX3 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL + STICKER_DIAGONAL);
-        final double baseY3 = (CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
+        final double baseY3 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
         final double baseX4 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
-        final double baseY4 = (CUBE_SPACE_ALLOCATED / 2 - CUBE_RADIUS + STICKER_LENGTH + 2 * SHORT_STICKER_GAP);
+        final double baseY4 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH + 2 * SHORT_STICKER_GAP);
 
         Polygon sticker = new Polygon();
         sticker.addPoint((int) (baseX1 + sX * horizontalTranslate - sY * horizontalTranslate),
@@ -152,13 +154,13 @@ public class DisplayCube extends JComponent {
         final double verticalTranslate = STICKER_LENGTH + 2 * SHORT_STICKER_GAP;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;
         final double baseX1 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2);
-        final double baseY1 = (CUBE_SPACE_ALLOCATED / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
+        final double baseY1 = (cubeSpaceAllocated / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
         final double baseX2 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2);
-        final double baseY2 = (CUBE_SPACE_ALLOCATED / 2 - STICKER_LENGTH - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
+        final double baseY2 = (cubeSpaceAllocated / 2 - STICKER_LENGTH - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
         final double baseX3 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
-        final double baseY3 = (CUBE_SPACE_ALLOCATED / 2 - STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
+        final double baseY3 = (cubeSpaceAllocated / 2 - STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
         final double baseX4 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
-        final double baseY4 = (CUBE_SPACE_ALLOCATED / 2 + STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
+        final double baseY4 = (cubeSpaceAllocated / 2 + STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
 
         Polygon sticker = new Polygon();
         sticker.addPoint((int) (baseX1 + sX * horizontalTranslate), (int) (baseY1 + sY * verticalTranslate + sX * horizontalCausedVerticalTranslate));
@@ -174,13 +176,13 @@ public class DisplayCube extends JComponent {
         final double verticalTranslate = STICKER_LENGTH + SHORT_STICKER_GAP * 2;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;
         final double baseX1 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
-        final double baseY1 = (CUBE_SPACE_ALLOCATED / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
+        final double baseY1 = (cubeSpaceAllocated / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
         final double baseX2 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
-        final double baseY2 = (CUBE_SPACE_ALLOCATED / 2 - STICKER_LENGTH + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
+        final double baseY2 = (cubeSpaceAllocated / 2 - STICKER_LENGTH + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
         final double baseX3 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2);
-        final double baseY3 = (CUBE_SPACE_ALLOCATED / 2 - STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
+        final double baseY3 = (cubeSpaceAllocated / 2 - STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
         final double baseX4 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2);
-        final double baseY4 = (CUBE_SPACE_ALLOCATED / 2 + STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
+        final double baseY4 = (cubeSpaceAllocated / 2 + STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
 
         Polygon sticker = new Polygon();
         sticker.addPoint((int) (baseX1 + sX * horizontalTranslate), (int) (baseY1 + sY * verticalTranslate - sX * horizontalCausedVerticalTranslate));

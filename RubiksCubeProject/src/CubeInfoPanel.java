@@ -8,6 +8,10 @@ public class CubeInfoPanel extends JPanel {
 
     private DisplayCube displayCube;
 
+    private ToolPanel toolPanel;
+
+    private JButton toolPanelButton;
+
     private Image background;
 
     public CubeInfoPanel(Cube cube) {
@@ -15,20 +19,20 @@ public class CubeInfoPanel extends JPanel {
 
         displayCube = cube.getDisplayCube();
 
+        toolPanel = new ToolPanel(this);
+        toolPanel.setVisible(false);
+
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(650, 700));
-
-
-        //JComponent toolPanel = new JComponent();
-
-
-        //toolPanel.setBackground(Color.CYAN);
-        toolPanel.setBorder(BorderFactory.createLineBorder(Color.GREEN));
-        toolPanel.setPreferredSize(new Dimension(600, 200));
 
         add(displayCube, BorderLayout.NORTH);
         add(toolPanel, BorderLayout.SOUTH);
     }
+
+    public void updateDisplayCube() {
+        displayCube.update();
+    }
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
