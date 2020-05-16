@@ -126,30 +126,30 @@ public class Cube {
             // if 2 moves contain "move" 2 and "move" delete i 3 times and replace with opposite notatoin move
             // || if 2 moves contain "move" and "move" 2 delete i 3 times and replace with opposite notatoin move
 
-//            if (prevNotation.contains("2") && currNotation.charAt(0) == prevNotation.charAt(0)) {
-//                if(prevNotation.contains("'")) {
-//                    scrambleNotation.add(String.valueOf(currNotation.charAt(0)));
-//                }
-//                else{
-//                    scrambleNotation.add((currNotation + "'"));
-//                }
-//                scrambleNotation.remove(i - 2);
-//                scrambleNotation.remove(i - 3);
-//                i--;
-//                continue;
-//            }
-//            if(currNotation.contains("2") && prevNotation.charAt(0) == currNotation.charAt(0)) {
-//                if(prevNotation.contains("'")) {
-//                    scrambleNotation.add(String.valueOf(prevNotation.charAt(0)));
-//                }
-//                else{
-//                    scrambleNotation.add((prevNotation + "'"));
-//                }
-//                scrambleNotation.remove(i - 2);
-//                scrambleNotation.remove(i - 3);
-//                i--;
-//                continue;
-//            }
+            if (prevNotation.contains("2") && currNotation.charAt(0) == prevNotation.charAt(0)) {
+                if(prevNotation.contains("'")) {
+                    scrambleNotation.add(String.valueOf(currNotation.charAt(0)));
+                }
+                else{
+                    scrambleNotation.add((currNotation + "'"));
+                }
+                scrambleNotation.remove(i - 2);
+                scrambleNotation.remove(i - 3);
+                i--;
+                continue;
+            }
+            if(currNotation.contains("2") && prevNotation.charAt(0) == currNotation.charAt(0)) {
+                if(prevNotation.contains("'")) {
+                    scrambleNotation.add(String.valueOf(prevNotation.charAt(0)));
+                }
+                else{
+                    scrambleNotation.add((prevNotation + "'"));
+                }
+                scrambleNotation.remove(i - 2);
+                scrambleNotation.remove(i - 3);
+                i--;
+                continue;
+            }
 
             scrambleNotation.add(currNotation);
             prevNotation = scrambleNotation.get(scrambleNotation.size() - 1);
