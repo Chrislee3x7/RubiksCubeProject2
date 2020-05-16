@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class DisplayCube extends JPanel {
 
-    private static final int CUBE_SPACE_ALLOCATED = 500;
+    private static final int CUBE_SPACE_ALLOCATED = 550;
 
     private static final int WINDOW_DIMENSTION = 650;
 
