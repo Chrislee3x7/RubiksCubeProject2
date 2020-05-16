@@ -89,12 +89,14 @@ public class Cube {
         //displayCube.update();
     }
 
-    //basically all stickers of the layer being rotated must move.
-    //each sticker (except center) has "other" sticker(s) that must follow it
-    //because they are attached to the same piece
-    //so when this method is called, it will move not just the stickers on its own layer,
-    //but also the connected stickers.
 
+    // 1. if two single turns are same, ex: D D
+    //          replace with D2 i-- (D2 considered 1 move so not a reroll)
+    // 2a. if two single turns are opposites ex: D D' OR D' D remove last i-- (reroll)
+    // 2b. 
+    // 3. if one double turn and one single turn ex: D2 D OR D2 D' delete single turn move i-- (reroll)
+    //      it is impossible to get D D2 OR D' D2, as that will cause it to go to the first case
+    // 4.
     private List<String> scrambleGenerator () {
         int randomNumOfMoves = (int) (Math.random() * 5 + 20);
         List<String> scrambleNotation = new ArrayList<>();
@@ -334,6 +336,11 @@ public class Cube {
         }
     }
 
+    //basically all stickers of the layer being rotated must move.
+    //each sticker (except center) has "other" sticker(s) that must follow it
+    //because they are attached to the same piece
+    //so when this method is called, it will move not just the stickers on its own layer,
+    //but also the connected stickers.
     private void rotateSide(LayerNotation layerNotation, TurnDirection turnDirection) {
         //System.out.println("Trying to rotate layer");
         rotateAllEdges(getFaceIndex(layerNotation), turnDirection);
