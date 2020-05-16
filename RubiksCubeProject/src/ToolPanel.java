@@ -33,22 +33,22 @@ public class ToolPanel extends JPanel implements ActionListener {
         if (isVisible) {
             setVisible(false);
             isVisible = false;
-        }
-        else {
+        } else {
             setVisible(true);
             isVisible = true;
         }
     }
+
     //is visible basically
     public boolean isOpen() {
         return isVisible;
     }
 
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == toolPanelButton) {
-            toggleVisibility();
-            cubeInfoPanel.updateDisplayCube();
-        }
+        //System.out.println("tool button pressed and action received");
+        toggleVisibility();
+        cubeInfoPanel.updateDisplayCube();
+
     }
 
     public void paintComponent(Graphics g) {

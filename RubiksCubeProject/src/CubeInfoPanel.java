@@ -30,9 +30,9 @@ public class CubeInfoPanel extends JPanel {
         setLayout(new BorderLayout());
         setPreferredSize(new Dimension(650, 700));
 
-        add(displayCube);
-        add(toolPanel);
-        add(toolPanelButton);
+        add(displayCube, BorderLayout.NORTH);
+        add(toolPanel, BorderLayout.EAST);
+        add(toolPanelButton, BorderLayout.WEST);
         toolPanelButton.setVisible(true);
     }
 
