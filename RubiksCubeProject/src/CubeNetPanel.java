@@ -29,15 +29,15 @@ public class CubeNetPanel extends JComponent {
 
         paintEachCubeFace(g, (325 - (4 * faceDimensions))/2, faceDimensions + distanceBetweenNetAndWindow - fixDistance, 1);
 
-        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, faceDimensions + distanceBetweenNetAndWindow - fixDistance, 0);
+        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, faceDimensions + distanceBetweenNetAndWindow - fixDistance, 2);
 
         paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions * 2) + distanceBetween2CubeFace * 2,  faceDimensions + distanceBetweenNetAndWindow - fixDistance, 3);
 
-        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions * 3) + distanceBetween2CubeFace * 3 , faceDimensions + distanceBetweenNetAndWindow - fixDistance, 5);
+        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions * 3) + distanceBetween2CubeFace * 3 , faceDimensions + distanceBetweenNetAndWindow - fixDistance, 4);
 
-        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, distanceBetweenNetAndWindow - distanceBetween2CubeFace - fixDistance, 4);
+        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, distanceBetweenNetAndWindow - distanceBetween2CubeFace - fixDistance, 0);
 
-        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, 200 - faceDimensions - distanceBetweenNetAndWindow + distanceBetween2CubeFace - fixDistance, 2);
+        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, 200 - faceDimensions - distanceBetweenNetAndWindow + distanceBetween2CubeFace - fixDistance, 5);
 
 
 
