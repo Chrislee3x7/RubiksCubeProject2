@@ -4,6 +4,7 @@ import java.awt.*;
 public class CubeNetPanel extends JComponent {
 
     private Cube cube;
+    private int cubeHeight;
 
     public CubeNetPanel(Cube cube) {
         this.cube = cube;
@@ -18,10 +19,14 @@ public class CubeNetPanel extends JComponent {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.GREEN);
-        
-        g.drawRect(66, 1, 66, 66);
-        g.drawRect(66, 67, 66, 66);
-        g.drawRect(66, 133, 66, 66);
+        cubeHeight = 40;
+
+        g.drawRect(cubeHeight, 20, cubeHeight * 3, cubeHeight * 3);
+//        g.drawRect(cubeHeight, 60, cubeHeight * 3,  cubeHeight * 3);
+        g.drawRect(cubeHeight, 100, cubeHeight * 3, cubeHeight * 3);
+
+    }
+    public void paintEachCubeFace() {
 
     }
 
