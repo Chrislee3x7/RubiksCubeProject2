@@ -26,22 +26,28 @@ public class DisplayCube extends JLayeredPane {
 
     private static final double SHORT_STICKER_GAP = (STICKER_GAP / (Math.sqrt(3))) / 2;
 
+    private View currentView;
 
     private Cube cube;
 
     public DisplayCube(Cube cube) {
         this.cube = cube;
         setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
+        currentView = View.TOP_FRONT_RIGHT;
         //System.out.println(APOTHEM);
     }
 
     public void setCubeSpaceAllocated(boolean toolPanelIsOpen) {
         if (toolPanelIsOpen) {
             cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITH_TOOLS;
-        }
-        else {
+        } else {
             cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITHOUT_TOOLS;
         }
+    }
+
+    public void setCurrentView(View view) {
+        currentView = view;
+        update();
     }
 
     public void update() {
@@ -49,28 +55,145 @@ public class DisplayCube extends JLayeredPane {
     }
 
 
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        if (true) {
-            displayCube3(g);
+        //displayCube0(g);
+        //currentView = View.FRONT;
+        switch (currentView) {
+            case FRONT:
+                displayCube0(g);
+                break;
+            case TOP_FRONT:
+                displayCube1(g);
+                break;
+            case FRONT_RIGHT:
+                displayCube2(g);
+                break;
+            case TOP_FRONT_RIGHT:
+                displayCube3(g);
         }
 
     }
 
+    //All display view type 0: FRONT
     public void displayCube0(Graphics g) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        g.fillRect((int) (WINDOW_DIMENSION / 2 - cubeSideLength / 2),
+                (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2),
+                (int) cubeSideLength, (int) cubeSideLength);
+        CubeFace currentFace = cube.getCubeFaceArray()[cube.getFrontFaceIndex()];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            g.setColor(sticker.getDisplayColor());
+            int stickerIndex = sticker.getStickerLocation().getStickerIndex();
+            drawFrontSticker0(g, stickerIndex % 3, stickerIndex / 3);
+        }
+    }
+
+    public void drawFrontSticker0(Graphics g, int x, int y) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
+        double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
+        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+                (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
+                (int) stickerLength, (int) stickerLength);
+    }
+
+    public void drawSideStickers0(Graphics g) {
 
     }
 
+    //All display view type 1: TOP_FRONT
     public void displayCube1(Graphics g) {
+        double shortCubeSideLength = APOTHEM;
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        g.fillRect((int) (WINDOW_DIMENSION / 2 - cubeSideLength / 2), (int) (cubeSpaceAllocated / 2 - shortCubeSideLength),
+                (int) cubeSideLength, (int) (shortCubeSideLength * 2));
+        CubeFace currentFace = cube.getCubeFaceArray()[cube.getUpFaceIndex()];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            g.setColor(sticker.getDisplayColor());
+            int stickerIndex = sticker.getStickerLocation().getStickerIndex();
+            drawUpFaceSticker1(g, stickerIndex % 3, stickerIndex / 3);
+        }
+        currentFace = cube.getCubeFaceArray()[cube.getFrontFaceIndex()];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            g.setColor(sticker.getDisplayColor());
+            int stickerIndex = sticker.getStickerLocation().getStickerIndex();
+            drawFrontFaceSticker1(g, stickerIndex % 3, stickerIndex / 3);
+        }
+    }
+
+    public void drawUpFaceSticker1(Graphics g, int x, int y) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        double shortCubeSideLength = APOTHEM;
+        double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
+        double shortStickerGap = STICKER_GAP / 2;
+        double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
+        double shortStickerLength = STICKER_DIAGONAL / 2;
+        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+                (int) (cubeSpaceAllocated / 2 - shortCubeSideLength + shortStickerGap + y * (shortStickerGap + shortStickerLength)),
+                (int) stickerLength, (int) shortStickerLength);
 
     }
 
+    public void drawFrontFaceSticker1(Graphics g, int x, int y) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        double shortCubeSideLength = APOTHEM;
+        double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
+        double shortStickerGap = STICKER_GAP / 2;
+        double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
+        double shortStickerLength = STICKER_DIAGONAL / 2;
+        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+                (int) (cubeSpaceAllocated / 2 + shortStickerGap + y * (shortStickerGap + shortStickerLength)),
+                (int) stickerLength, (int) shortStickerLength);
+    }
+
+
+    //All display view type 1: FRONT_RIGHT
     public void displayCube2(Graphics g) {
-
+        double shortCubeSideLength = APOTHEM;
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        g.fillRect((int) (WINDOW_DIMENSION / 2 - shortCubeSideLength), (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2),
+                (int) (shortCubeSideLength * 2), (int) cubeSideLength);
+        CubeFace currentFace = cube.getCubeFaceArray()[cube.getFrontFaceIndex()];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            g.setColor(sticker.getDisplayColor());
+            int stickerIndex = sticker.getStickerLocation().getStickerIndex();
+            drawFrontFaceSticker2(g, stickerIndex % 3, stickerIndex / 3);
+        }
+        currentFace = cube.getCubeFaceArray()[cube.getRightFaceIndex()];
+        for (Sticker sticker : currentFace.getAllStickers()) {
+            g.setColor(sticker.getDisplayColor());
+            int stickerIndex = sticker.getStickerLocation().getStickerIndex();
+            drawRightFaceSticker2(g, stickerIndex % 3, stickerIndex / 3);
+        }
     }
 
+    public void drawFrontFaceSticker2(Graphics g, int x, int y) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        double shortCubeSideLength = APOTHEM;
+        double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
+        double shortStickerGap = STICKER_GAP / 2;
+        double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
+        double shortStickerLength = STICKER_DIAGONAL / 2;
+        g.fillRect((int) ((WINDOW_DIMENSION / 2 - shortCubeSideLength + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
+                (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
+                (int) shortStickerLength, (int) stickerLength);
+    }
+
+    public void drawRightFaceSticker2(Graphics g, int x, int y) {
+        double cubeSideLength = APOTHEM * Math.sqrt(2);
+        double shortCubeSideLength = APOTHEM;
+        double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
+        double shortStickerGap = STICKER_GAP / 2;
+        double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
+        double shortStickerLength = STICKER_DIAGONAL / 2;
+        g.fillRect((int) ((WINDOW_DIMENSION / 2 + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
+                (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
+                (int) shortStickerLength, (int) stickerLength);
+    }
+
+        //All display view type 3: TOP_FRONT_RIGHT
     public void displayCube3(Graphics g) {
         Polygon rhombus1 = new Polygon();
         rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
@@ -94,14 +217,14 @@ public class DisplayCube extends JLayeredPane {
         g.fillPolygon(rhombus3);
 //        g.setColor(Color.WHITE);
 
-        displayCubeFace(g, cube.getUpFaceIndex(), LayerNotation.U);
-        displayCubeFace(g, cube.getFrontFaceIndex(), LayerNotation.F);
-        displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.R);
+        displayCubeFace3(g, cube.getUpFaceIndex(), LayerNotation.U);
+        displayCubeFace3(g, cube.getFrontFaceIndex(), LayerNotation.F);
+        displayCubeFace3(g, cube.getRightFaceIndex(), LayerNotation.R);
 
-        //g.fillPolygon(makeUpFaceSticker(2, 2));
+        //g.fillPolygon(makeUpFaceSticker3(2, 2));
     }
 
-    public void displayCubeFace(Graphics g, int faceIndex, LayerNotation face) {
+    public void displayCubeFace3(Graphics g, int faceIndex, LayerNotation face) {
         CubeFace currentFace = cube.getCubeFaceArray()[faceIndex];
         for (Sticker sticker : currentFace.getAllStickers()) {
             g.setColor(sticker.getDisplayColor());
@@ -109,15 +232,15 @@ public class DisplayCube extends JLayeredPane {
             //System.out.println(stickerColor);
             switch (face) {
                 case U:
-                    g.fillPolygon(makeUpFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                    g.fillPolygon(makeUpFaceSticker3(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;
                 case F:
-                    g.fillPolygon(makeFrontFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                    g.fillPolygon(makeFrontFaceSticker3(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;
                 case R:
-                    g.fillPolygon(makeRightFaceSticker(sticker.getStickerLocation().getStickerIndex() % 3,
+                    g.fillPolygon(makeRightFaceSticker3(sticker.getStickerLocation().getStickerIndex() % 3,
                             sticker.getStickerLocation().getStickerIndex() / 3));
                     break;
                 default:
@@ -126,7 +249,7 @@ public class DisplayCube extends JLayeredPane {
         }
     }
 
-    public Polygon makeUpFaceSticker(int sX, int sY) {
+    public Polygon makeUpFaceSticker3(int sX, int sY) {
         final double horizontalTranslate = (0.5 * STICKER_GAP + 0.5 * STICKER_DIAGONAL);
         final double verticalTranslate = SHORT_STICKER_GAP + 0.5 * STICKER_LENGTH;
         final double baseX1 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL);
@@ -151,7 +274,7 @@ public class DisplayCube extends JLayeredPane {
         return sticker;
     }
 
-    public Polygon makeFrontFaceSticker(int sX, int sY) {
+    public Polygon makeFrontFaceSticker3(int sX, int sY) {
         final double horizontalTranslate = STICKER_DIAGONAL / 2 + STICKER_GAP / 2;
         final double verticalTranslate = STICKER_LENGTH + 2 * SHORT_STICKER_GAP;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;
@@ -173,7 +296,7 @@ public class DisplayCube extends JLayeredPane {
         return sticker;
     }
 
-    public Polygon makeRightFaceSticker(int sX, int sY) {
+    public Polygon makeRightFaceSticker3(int sX, int sY) {
         final double horizontalTranslate = STICKER_DIAGONAL / 2 + STICKER_GAP / 2;
         final double verticalTranslate = STICKER_LENGTH + SHORT_STICKER_GAP * 2;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;

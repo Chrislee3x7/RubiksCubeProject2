@@ -7,14 +7,17 @@ public class ChangeViewPanel extends JPanel implements ActionListener{
 
     JComboBox viewOptions;
 
-    String[] views = {"Front View", "Front-Right View", "Top-Front View", "Top-Front-Right View"};
+    String[] views = {"Front View", "Top-Front View", "Front-Right View", "Top-Front-Right View"};
 
-    public ChangeViewPanel () {
+    DisplayCube displayCube;
+
+    public ChangeViewPanel (DisplayCube displayCube) {
+        this.displayCube = displayCube;
         setPreferredSize(new Dimension(325, 200));
         viewOptions = new JComboBox(views);
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
-        //setBorder(BorderFactory.createLineBorder(Color.RED));
+        viewOptions.setSelectedItem("Top-Front-Right View");
         setLayout(new BorderLayout());
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
@@ -22,7 +25,21 @@ public class ChangeViewPanel extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-
+        String view = (String) ((JComboBox) e.getSource()).getSelectedItem();
+        switch (view) {
+            case "Front View":
+                displayCube.setCurrentView(View.FRONT);
+                break;
+            case "Top-Front View":
+                displayCube.setCurrentView(View.TOP_FRONT);
+                break;
+            case "Front-Right View":
+                displayCube.setCurrentView(View.FRONT_RIGHT);
+                break;
+            case "Top-Front-Right View" :
+                displayCube.setCurrentView(View.TOP_FRONT_RIGHT);
+                break;
+        }
     }
 
     public void paintComponent(Graphics g) {
