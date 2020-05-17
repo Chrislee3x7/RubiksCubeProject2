@@ -48,30 +48,30 @@ public class DisplayCube extends JLayeredPane {
         repaint();
     }
 
-    public Color getDisplayColor(StickerColor stickerColor) {
-        switch (stickerColor) {
-            case WHITE:
-                // can be changed to take user input later
-                return Color.WHITE;
-            case ORANGE:
-                return new Color(255, 135, 8);
-            case GREEN:
-                return new Color(9, 207, 2);
-            case BLUE:
-                return new Color(8, 119, 255);
-            case RED:
-                return new Color(235, 41, 2);
-            case YELLOW:
-                return Color.YELLOW;
-            default:
-                //System.out.println("Bruh where's the color");
-                return null;
-        }
-    }
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        if (true) {
+            displayCube3(g);
+        }
+
+    }
+
+    public void displayCube0(Graphics g) {
+
+    }
+
+    public void displayCube1(Graphics g) {
+
+    }
+
+    public void displayCube2(Graphics g) {
+
+    }
+
+    public void displayCube3(Graphics g) {
         Polygon rhombus1 = new Polygon();
         rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
         rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
@@ -99,14 +99,12 @@ public class DisplayCube extends JLayeredPane {
         displayCubeFace(g, cube.getRightFaceIndex(), LayerNotation.R);
 
         //g.fillPolygon(makeUpFaceSticker(2, 2));
-
     }
 
     public void displayCubeFace(Graphics g, int faceIndex, LayerNotation face) {
         CubeFace currentFace = cube.getCubeFaceArray()[faceIndex];
         for (Sticker sticker : currentFace.getAllStickers()) {
-            StickerColor stickerColor = sticker.getColor();
-            g.setColor(getDisplayColor(stickerColor));
+            g.setColor(sticker.getDisplayColor());
 //            g.setColor(Color.green);
             //System.out.println(stickerColor);
             switch (face) {
