@@ -28,7 +28,7 @@ public class RubiksCube {
         window.add(cubeInfoPanel, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
 
-        ScramblePanel scramblePanel = new ScramblePanel(cube);
+        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel);
         window.add(scramblePanel, BorderLayout.SOUTH);
         //window.add(displayCube, BorderLayout.NORTH);
 

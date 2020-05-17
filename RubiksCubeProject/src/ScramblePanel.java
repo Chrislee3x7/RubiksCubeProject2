@@ -11,26 +11,35 @@ public class ScramblePanel extends JPanel implements ActionListener {
 
     private JButton resetCubeButton;
 
+    private JButton toolPanelButton;
+
     private Cube cube;
 
-    public ScramblePanel(Cube cube) {
+    private CubeInfoPanel cubeInfoPanel;
+
+    public ScramblePanel(Cube cube, CubeInfoPanel cubeInfoPanel) {
         this.cube = cube;
+        this.cubeInfoPanel = cubeInfoPanel;
         //setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
         currentScramble = cube.getCurrentScramble();
         resetCubeButton = new JButton("Reset");
         resetCubeButton.setFont(new Font("Hebrew", Font.ITALIC, 20));
         resetCubeButton.addActionListener(this);
         resetCubeButton.setPreferredSize(new Dimension(100, 40));
 
-//        scrambleCubeButton = new JButton("Scramble");
-//        scrambleCubeButton.addActionListener(this);
-//        scrambleCubeButton.setPreferredSize(new Dimension(130, 40));
-
         scrambleTextButton = new JButton(currentScramble);
-        scrambleTextButton.setPreferredSize(new Dimension(900, 40));
+        scrambleTextButton.setPreferredSize(new Dimension(820, 40));
         scrambleTextButton.addActionListener(this);
         scrambleTextButton.setFont(new Font("Hebrew", Font.ITALIC, 25));
         scrambleTextButton.setHorizontalAlignment(JButton.CENTER);
+
+
+        toolPanelButton = new JButton("Tools");
+        toolPanelButton.setPreferredSize(new Dimension(100,40));
+        toolPanelButton.setFont(new Font("Hebrew", Font.ITALIC, 20));
+        toolPanelButton.setBackground(Color.RED);
+        toolPanelButton.addActionListener(this);
 
         //scrambleTextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -38,6 +47,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
         setBackground(new Color(158, 196, 197));
 
         //setLayout(layout);
+        add(toolPanelButton);
         add(scrambleTextButton);
         add(resetCubeButton);
     }
@@ -51,6 +61,10 @@ public class ScramblePanel extends JPanel implements ActionListener {
         else if (e.getSource() == scrambleTextButton) {
             cube.scrambleCube();
             updateScramble(cube.getCurrentScramble());
+        }
+        else if (e.getSource() == toolPanelButton) {
+            cubeInfoPanel.toggleToolPanelVisibility();
+            cubeInfoPanel.updateDisplayCube();
         }
     }
 

@@ -1,30 +1,20 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class ToolPanel extends JPanel implements ActionListener {
+public class ToolPanel extends JPanel {
 
     private boolean isVisible;
 
-    private CubeInfoPanel cubeInfoPanel;
-
     private CubeNetPanel cubeNet;
 
-    private Cube cube;
+    public ToolPanel(Cube cube) {
 
-    private JButton toolPanelButton;
-
-    public ToolPanel(CubeInfoPanel cubeInfoPanel, Cube cube, JButton toolPanelButton) {
-        this.cubeInfoPanel = cubeInfoPanel;
-        this.cube = cube;
-        this.toolPanelButton = toolPanelButton;
-
+        isVisible = true;
         setLayout(new BorderLayout());
         cubeNet = new CubeNetPanel(cube);
         add(cubeNet, BorderLayout.EAST);
         setBorder(BorderFactory.createLineBorder(Color.GREEN));
-        setPreferredSize(new Dimension(600, 200));
+        setPreferredSize(new Dimension(650, 180));
         setOpaque(false);
     }
 
@@ -42,13 +32,6 @@ public class ToolPanel extends JPanel implements ActionListener {
     //is visible basically
     public boolean isOpen() {
         return isVisible;
-    }
-
-    public void actionPerformed(ActionEvent e) {
-        //System.out.println("tool button pressed and action received");
-        toggleVisibility();
-        cubeInfoPanel.updateDisplayCube();
-
     }
 
     public void paintComponent(Graphics g) {

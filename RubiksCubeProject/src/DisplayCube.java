@@ -1,13 +1,13 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class DisplayCube extends JComponent {
+public class DisplayCube extends JLayeredPane {
 
     private int cubeSpaceAllocated = CUBE_SPACE_ALLOCATED_WITH_TOOLS;
 
-    private static final int CUBE_SPACE_ALLOCATED_WITHOUT_TOOLS = 550;
+    private static final int CUBE_SPACE_ALLOCATED_WITHOUT_TOOLS = 700;
 
-    private static final int CUBE_SPACE_ALLOCATED_WITH_TOOLS = 500;
+    private static final int CUBE_SPACE_ALLOCATED_WITH_TOOLS = 550;
 
     private static final int WINDOW_DIMENSION = 650;
 
@@ -31,7 +31,7 @@ public class DisplayCube extends JComponent {
 
     public DisplayCube(Cube cube) {
         this.cube = cube;
-        setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION - 100));
+        setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
         //System.out.println(APOTHEM);
     }
 
