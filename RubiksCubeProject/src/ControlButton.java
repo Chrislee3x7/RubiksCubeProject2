@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-public class ControlButton extends JButton implements MouseListener {
+public class ControlButton extends JButton implements ActionListener {
 
     private ControlPanel controlPanel;
 
@@ -26,27 +27,11 @@ public class ControlButton extends JButton implements MouseListener {
         setFont(new Font("Futura", Font.ITALIC, 30));
         this.moveNotation = moveNotation;
         this.controlPanel = controlPanel;
-        this.addMouseListener(this);
+        this.addActionListener(this);
     }
 
-    //When mouse pressed, sends to control panel: R, R' F' etc
-    public void mousePressed(MouseEvent e) {
+    //When button pressed, sends to control panel: R, R' F' etc
+    public void actionPerformed(ActionEvent e) {
         controlPanel.sendCommand(moveNotation);
-    }
-
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    public void mouseExited(MouseEvent e) {
-
-    }
-
-    public void mouseClicked(MouseEvent e) {
-
     }
 }
