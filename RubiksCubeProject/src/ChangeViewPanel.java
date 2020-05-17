@@ -14,7 +14,7 @@ public class ChangeViewPanel extends JPanel implements ActionListener{
         viewOptions = new JComboBox(views);
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
-        setBorder(BorderFactory.createLineBorder(Color.RED));
+        //setBorder(BorderFactory.createLineBorder(Color.RED));
         setLayout(new BorderLayout());
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
@@ -22,9 +22,7 @@ public class ChangeViewPanel extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-        JComboBox cb = (JComboBox)e.getSource();
-        String view = (String)cb.getSelectedItem();
-        viewOptions.setName(view);
+
     }
 
     public void paintComponent(Graphics g) {
