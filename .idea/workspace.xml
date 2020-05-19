@@ -16,7 +16,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file leaf-file-name="LeftToolsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="303">
@@ -209,16 +209,7 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CenterPiece.java" />
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Piece.java" />
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/StickerColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/TurnDirection.java">
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/.idea/vcs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
@@ -392,8 +383,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Sticker.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
+        <state relative-caret-position="72">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding>
+            <marker date="1589925453121" expanded="true" signature="47584:47626" ph="..." />
+            <marker date="1589925453121" expanded="true" signature="47584:47644" ph="..." />
+            <marker date="1589925453121" expanded="true" signature="47584:47657" ph="..." />
+            <marker date="1589925453121" expanded="true" signature="47584:47672" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -411,6 +408,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="303">
           <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
