@@ -15,7 +15,7 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         this.displayCube = displayCube;
         setPreferredSize(new Dimension(325, 200));
         viewOptions = new JComboBox(views);
-        setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        setBorder(BorderFactory.createTitledBorder("PP"));
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
