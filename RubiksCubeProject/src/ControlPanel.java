@@ -5,6 +5,11 @@ public class ControlPanel extends JPanel {
 
     private static final int WIDTH = 400;
 
+    public static boolean sendCommandCalled = false;
+
+    public MoveHistory moveHistory;
+
+
     //Window dimension from displaycube
     private static final int HEIGHT = 650;
 
@@ -21,6 +26,8 @@ public class ControlPanel extends JPanel {
         layout = new GridLayout(6, 4);
         setLayout(layout);
 
+        this.moveHistory = new MoveHistory();
+
         this.cube = cube;
         for (String notationSymbol : allNotation) {
             add(new ControlButton(this, notationSymbol));
@@ -29,13 +36,12 @@ public class ControlPanel extends JPanel {
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
+        moveHistory.addToMoveHistory(moveHistory, commandNotation);
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         //setBackground(Color.BLACK);
-
-
     }
 
 }
