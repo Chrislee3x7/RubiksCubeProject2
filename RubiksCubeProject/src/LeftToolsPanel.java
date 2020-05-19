@@ -5,21 +5,32 @@ import java.awt.event.ActionListener;
 
 public class LeftToolsPanel extends JPanel implements ActionListener{
 
-    JComboBox viewOptions;
+    private JComboBox viewOptions;
 
-    String[] views = {"Front View", "Top-Front View", "Front-Right View", "Top-Front-Right View"};
+    private String[] views = {"Front View", "Top-Front View", "Front-Right View", "Top-Front-Right View"};
 
-    DisplayCube displayCube;
+    private DisplayCube displayCube;
+
+    private JTextArea moveHistoryBox;
+
+    private JScrollPane scroll;
 
     public LeftToolsPanel(DisplayCube displayCube) {
         this.displayCube = displayCube;
         setPreferredSize(new Dimension(325, 200));
         viewOptions = new JComboBox(views);
-        setBorder(BorderFactory.createTitledBorder("PP"));
+        moveHistoryBox = new JTextArea();
+        moveHistoryBox.setEditable(false);
+        scroll = new JScrollPane(moveHistoryBox);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scroll.setPreferredSize(new Dimension(325, 150));
+//        moveHistoryBox.append();
+
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
         setLayout(new BorderLayout());
+        add(scroll, BorderLayout.NORTH);
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
 

@@ -45,4 +45,8 @@ public class ToolPanel extends JPanel {
         super.paintComponent(g);
         //g.drawRect(40, 40, 40, 40);
     }
+
+    public LeftToolsPanel getLeftToolsPanel() {
+        return leftToolsPanel;
+    }
 }
