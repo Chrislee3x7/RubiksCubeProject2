@@ -7,16 +7,16 @@ public class ToolPanel extends JPanel {
 
     private CubeNetPanel cubeNet;
 
-    private LeftToolsPanel changeViewPanel;
+    private LeftToolsPanel leftToolsPanel;
 
     public ToolPanel(Cube cube) {
 
         isVisible = false;
         setLayout(new BorderLayout());
         cubeNet = new CubeNetPanel(cube.getCubeFaceArray());
-        changeViewPanel = new LeftToolsPanel(cube.getDisplayCube());
+        leftToolsPanel = new LeftToolsPanel(cube.getDisplayCube());
         add(cubeNet, BorderLayout.EAST);
-        add(changeViewPanel, BorderLayout.WEST);
+        add(leftToolsPanel, BorderLayout.WEST);
         //setBorder(BorderFactory.createLineBorder(Color.GREEN));
         setPreferredSize(new Dimension(650, 180));
         setVisible(isVisible);
