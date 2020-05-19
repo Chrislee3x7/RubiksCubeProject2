@@ -40,4 +40,8 @@ public class CubeInfoPanel extends JPanel {
         super.paintComponent(g);
         g.drawImage(background, -1300, -900, this);
     }
+
+    public ToolPanel getToolPanel () {
+        return toolPanel;
+    }
 }

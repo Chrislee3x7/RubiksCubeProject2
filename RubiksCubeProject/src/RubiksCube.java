@@ -19,16 +19,14 @@ public class RubiksCube {
 
         window = new JFrame("Rubik's Cube");
 
-        ControlPanel controlPanel = new ControlPanel(cube);
-
-
-
         CubeInfoPanel cubeInfoPanel = new CubeInfoPanel(cube);
+
+        ControlPanel controlPanel = new ControlPanel(cube, cubeInfoPanel.getToolPanel().getLeftToolsPanel());
 
         window.add(cubeInfoPanel, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
 
-        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel);
+        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel, cubeInfoPanel.getToolPanel().getLeftToolsPanel());
         window.add(scramblePanel, BorderLayout.SOUTH);
         //window.add(displayCube, BorderLayout.NORTH);
 
