@@ -9,8 +9,6 @@ public class ControlPanel extends JPanel {
     //Window dimension from displaycube
     private static final int HEIGHT = 650;
 
-    private MoveHistory moveHistory;
-
     private Cube cube;
 
     private GridLayout layout;
@@ -21,13 +19,12 @@ public class ControlPanel extends JPanel {
             "U", "U'", "D", "D'", "F", "F'", "B", "B'", "R", "R'", "L", "L'"};
 
 
-    public ControlPanel(Cube cube) {
+    public ControlPanel(Cube cube, LeftToolsPanel leftToolsPanel) {
         setPreferredSize(new Dimension(WIDTH, HEIGHT + 50));
         layout = new GridLayout(6, 4);
         setLayout(layout);
 
-//        this.leftToolsPanel =
-//        this.moveHistory = new MoveHistory();
+        this.leftToolsPanel = leftToolsPanel;
 
         this.cube = cube;
         for (String notationSymbol : allNotation) {
@@ -37,7 +34,7 @@ public class ControlPanel extends JPanel {
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
-        moveHistory.addToMoveHistory(moveHistory, commandNotation);
+        leftToolsPanel.addMove(commandNotation);
     }
 
     public void paintComponent(Graphics g) {

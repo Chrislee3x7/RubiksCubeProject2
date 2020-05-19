@@ -17,9 +17,12 @@ public class ScramblePanel extends JPanel implements ActionListener {
 
     private CubeInfoPanel cubeInfoPanel;
 
-    public ScramblePanel(Cube cube, CubeInfoPanel cubeInfoPanel) {
+    private LeftToolsPanel leftToolsPanel;
+
+    public ScramblePanel(Cube cube, CubeInfoPanel cubeInfoPanel, LeftToolsPanel leftToolsPanel) {
         this.cube = cube;
         this.cubeInfoPanel = cubeInfoPanel;
+        this.leftToolsPanel = leftToolsPanel;
         //setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
         currentScramble = cube.getCurrentScramble();
@@ -69,6 +72,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
     }
 
     public void updateScramble(String newScramble) {
+        leftToolsPanel.resetMoveHistoryBox();
         currentScramble = newScramble;
         scrambleTextButton.setText(newScramble);
     }
