@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ChangeViewPanel extends JPanel implements ActionListener{
+public class LeftToolsPanel extends JPanel implements ActionListener{
 
     JComboBox viewOptions;
 
@@ -11,10 +11,11 @@ public class ChangeViewPanel extends JPanel implements ActionListener{
 
     DisplayCube displayCube;
 
-    public ChangeViewPanel (DisplayCube displayCube) {
+    public LeftToolsPanel(DisplayCube displayCube) {
         this.displayCube = displayCube;
         setPreferredSize(new Dimension(325, 200));
         viewOptions = new JComboBox(views);
+        setBorder(BorderFactory.createLineBorder(Color.BLACK));
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
