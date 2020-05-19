@@ -1,17 +1,26 @@
+import org.w3c.dom.css.Rect;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 
 public class CubeNetPanel extends JComponent {
 
+    private Cube cube;
     private CubeFace[] cubeFaceArray;
     private static final int faceDimensions = 55;
     private static final int distanceBetweenNetAndWindow = (200 - 3 * (faceDimensions))/2;
     private static final int distanceBetween2CubeFace = 3;
     private static final int fixDistance  = 10;
 
-    public CubeNetPanel(CubeFace[] cubeFaceArray) {
-        this.cubeFaceArray = cubeFaceArray;
+    public CubeNetPanel(Cube cube) {
+        this.cube = cube;
+        this.cubeFaceArray = cube.getCubeFaceArray();
         setPreferredSize(new Dimension(325, 200));
+    }
+
+    public void displayCubeNet () {
+
     }
 
     public void paintComponent(Graphics g) {
@@ -28,14 +37,13 @@ public class CubeNetPanel extends JComponent {
 
         paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, distanceBetweenNetAndWindow - distanceBetween2CubeFace - fixDistance, 0);
 
-        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace,  2 * faceDimensions + distanceBetweenNetAndWindow + distanceBetween2CubeFace - fixDistance, 5);
+        paintEachCubeFace(g, (325 - (4 * faceDimensions))/2 + (faceDimensions) + distanceBetween2CubeFace, 200 - faceDimensions - distanceBetweenNetAndWindow + distanceBetween2CubeFace - fixDistance, 5);
 
 
 
 
 
     }
-
     public void paintEachCubeFace(Graphics g, int topLeftCornerX, int topLeftCornerY, int faceIndex) {
 
         int stickerPaintedCount = 0;
