@@ -16,7 +16,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-<<<<<<< HEAD
       <file leaf-file-name="LeftToolsPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -72,13 +71,6 @@
                 <element signature="imports" expanded="true" />
                 <marker date="1589918190718" expanded="false" signature="1957:2319" ph="{...}" />
               </folding>
-=======
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
->>>>>>> 250db72a3951e960b00b263c137fa80495810ea3
             </state>
           </provider>
         </entry>
@@ -268,20 +260,7 @@
     </layout>
   </component>
   <component name="editorHistoryManager">
-<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/.idea/vcs.xml">
-=======
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CenterPiece.java" />
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Piece.java" />
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/StickerColor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="24" selection-start-column="24" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/TurnDirection.java">
->>>>>>> 250db72a3951e960b00b263c137fa80495810ea3
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
           <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
@@ -455,7 +434,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Sticker.java">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
         <state relative-caret-position="72">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
@@ -464,10 +442,6 @@
             <marker date="1589925453121" expanded="true" signature="47584:47657" ph="..." />
             <marker date="1589925453121" expanded="true" signature="47584:47672" ph="..." />
           </folding>
-=======
-        <state relative-caret-position="270">
-          <caret line="24" column="24" selection-start-line="24" selection-start-column="24" selection-end-line="24" selection-end-column="24" />
->>>>>>> 250db72a3951e960b00b263c137fa80495810ea3
         </state>
       </provider>
     </entry>

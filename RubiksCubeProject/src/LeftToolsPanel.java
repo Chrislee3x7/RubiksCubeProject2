@@ -25,9 +25,9 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         scroll = new JScrollPane(moveHistoryBox);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setPreferredSize(new Dimension(325, 150));
-        moveHistoryBox.setBackground(new Color(0,0,0, 0));
-        moveHistoryBox.setOpaque(false);
-        scroll.setOpaque(true);
+        moveHistoryBox.setBackground(new Color(255,182,193, 0));
+        moveHistoryBox.setOpaque(true);
+        scroll.setOpaque(false);
         scroll.getViewport().setOpaque(true);
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
