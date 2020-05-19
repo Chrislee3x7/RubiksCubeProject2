@@ -21,11 +21,11 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         viewOptions = new JComboBox(views);
         moveHistoryBox = new JTextArea();
         moveHistoryBox.setEditable(false);
+        moveHistoryBox.setLineWrap(true);
         scroll = new JScrollPane(moveHistoryBox);
         scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setPreferredSize(new Dimension(325, 150));
-//        moveHistoryBox.append();
-
+        moveHistoryBox.setBackground(new Color(233,209,249));
         //this class will listen, and send commands to display cube
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
@@ -34,6 +34,12 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
 
+    }
+
+    public void addMove()
+    {
+        moveHistoryBox.append("PP");
+        //Rip my life
     }
 
     public void actionPerformed(ActionEvent e) {
