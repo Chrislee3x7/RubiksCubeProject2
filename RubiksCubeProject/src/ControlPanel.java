@@ -25,7 +25,6 @@ public class ControlPanel extends JPanel implements KeyListener {
         setPreferredSize(new Dimension(WIDTH, HEIGHT + 50));
         layout = new GridLayout(6, 4);
         setLayout(layout);
-
         this.leftToolsPanel = leftToolsPanel;
 
         this.cube = cube;
@@ -33,16 +32,17 @@ public class ControlPanel extends JPanel implements KeyListener {
             add(new ControlButton(this, notationSymbol));
         }
 
-        System.out.println(isFocusable());
+        setFocusable(true);
+        //System.out.println(isFocusable());
     }
 
     public void keyTyped(KeyEvent e) {
-        System.out.println("key pressed:");
+        System.out.println("key typed");
         System.out.println(e.getKeyChar());
     }
 
     public void keyPressed(KeyEvent e) {
-
+        System.out.println("key pressed");
     }
 
     public void keyReleased(KeyEvent e) {

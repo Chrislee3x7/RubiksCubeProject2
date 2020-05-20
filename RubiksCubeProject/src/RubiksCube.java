@@ -35,12 +35,8 @@ public class RubiksCube {
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(true);
         window.setVisible(true);
-//        displayCube.update();
 
-        //cube.scrambleCube();
-
-//        displayCube.update();
-
+        controlPanel.grabFocus();
     }
 
 }

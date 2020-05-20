@@ -1,5 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class DisplayCube extends JLayeredPane {
 
@@ -36,6 +40,7 @@ public class DisplayCube extends JLayeredPane {
         currentView = View.TOP_FRONT_RIGHT;
         //System.out.println(APOTHEM);
     }
+
 
     public void setCubeSpaceAllocated(boolean toolPanelIsOpen) {
         if (toolPanelIsOpen) {
@@ -97,10 +102,6 @@ public class DisplayCube extends JLayeredPane {
         g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
                 (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
                 (int) stickerLength, (int) stickerLength);
-    }
-
-    public void drawSideStickers0(Graphics g) {
-
     }
 
     //All display view type 1: TOP_FRONT
