@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.plaf.ScrollBarUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,29 +21,31 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         setPreferredSize(new Dimension(325, 200));
         viewOptions = new JComboBox(views);
         moveHistoryBox = new JTextArea();
+        moveHistoryBox.setFont(new Font("Courier",Font.PLAIN, 16));
         moveHistoryBox.setEditable(false);
         moveHistoryBox.setLineWrap(true);
+        moveHistoryBox.setWrapStyleWord(true);
         scroll = new JScrollPane(moveHistoryBox);
-        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         scroll.setPreferredSize(new Dimension(325, 150));
-        moveHistoryBox.setBackground(new Color(255,182,193, 0));
-        moveHistoryBox.setOpaque(true);
+        moveHistoryBox.setOpaque(false);
+        moveHistoryBox.setBackground(new Color(255,252,187, 50));
         scroll.setOpaque(false);
-        scroll.getViewport().setOpaque(true);
-        //this class will listen, and send commands to display cube
+        scroll.getViewport().setOpaque(false);
+        scroll.setBackground(new Color(255,252,187, 50));
+
+        scroll.getVerticalScrollBar().setBackground(new Color(0,200,0));
+
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
         setLayout(new BorderLayout());
         add(scroll, BorderLayout.NORTH);
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
-
     }
 
     public void addMove(String commandNotation)
     {
         moveHistoryBox.append(commandNotation + " ");
-        //Rip my life
     }
 
     public void actionPerformed(ActionEvent e) {

@@ -1,7 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-public class ControlPanel extends JPanel {
+public class ControlPanel extends JPanel implements KeyListener {
 
     private static final int WIDTH = 400;
 
@@ -30,7 +32,23 @@ public class ControlPanel extends JPanel {
         for (String notationSymbol : allNotation) {
             add(new ControlButton(this, notationSymbol));
         }
+
+        System.out.println(isFocusable());
     }
+
+    public void keyTyped(KeyEvent e) {
+        System.out.println("key pressed:");
+        System.out.println(e.getKeyChar());
+    }
+
+    public void keyPressed(KeyEvent e) {
+
+    }
+
+    public void keyReleased(KeyEvent e) {
+
+    }
+
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
