@@ -12,7 +12,7 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
 
     private DisplayCube displayCube;
 
-    private JTextArea moveHistoryBox;
+    private static JTextArea moveHistoryBox;
 
     private JScrollPane scroll;
 
@@ -43,7 +43,7 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         setOpaque(false);
     }
 
-    public void addMove(String commandNotation)
+    public static void addMove(String commandNotation)
     {
         moveHistoryBox.append(commandNotation + " ");
     }

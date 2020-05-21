@@ -4,10 +4,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.security.Key;
 
-public class ControlPanel extends JPanel {
+public class ControlPanel extends JLayeredPane {
 
     private static final int WIDTH = 400;
-
 
     //Window dimension from displaycube
     private static final int HEIGHT = 650;
@@ -17,6 +16,8 @@ public class ControlPanel extends JPanel {
     private GridLayout layout;
 
     private LeftToolsPanel leftToolsPanel;
+
+    private boolean isVisible = true;
 
 
 
@@ -36,10 +37,21 @@ public class ControlPanel extends JPanel {
         }
 
         setFocusable(true);
+        setVisible(isVisible);
+        setOpaque(true);
         //System.out.println(isFocusable());
 
     }
 
+    public void toggleVisibility() {
+        if (isVisible) {
+            setVisible(false);
+            isVisible = false;
+        } else {
+            setVisible(true);
+            isVisible = true;
+        }
+    }
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
@@ -48,6 +60,8 @@ public class ControlPanel extends JPanel {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
+        g.setColor(Color.BLACK);
+        g.fillRect(40,40,40,40);
         //setBackground(Color.BLACK);
     }
 

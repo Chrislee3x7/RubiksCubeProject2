@@ -7,6 +7,10 @@ public class RubiksCube {
 
     JFrame window;
 
+    ControlPanel controlPanel;
+
+    CubeInfoPanel cubeInfoPanel;
+
     public static void main(String[] args) {
         RubiksCube rubiksCube = new RubiksCube();
 
@@ -19,24 +23,40 @@ public class RubiksCube {
 
         window = new JFrame("Rubik's Cube");
 
-        CubeInfoPanel cubeInfoPanel = new CubeInfoPanel(cube);
+        cubeInfoPanel = new CubeInfoPanel(cube, this);
 
-        ControlPanel controlPanel = new ControlPanel(cube, cubeInfoPanel.getToolPanel().getLeftToolsPanel());
+        controlPanel = new ControlPanel(cube, cubeInfoPanel.getToolPanel().getLeftToolsPanel());
 
         window.add(cubeInfoPanel, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
 
-        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel, cubeInfoPanel.getToolPanel().getLeftToolsPanel());
+        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel, cubeInfoPanel.getToolPanel().getLeftToolsPanel(), this);
         window.add(scramblePanel, BorderLayout.SOUTH);
-        //window.add(displayCube, BorderLayout.NORTH);
 
         //window.setPreferredSize(new Dimension( 600, 650 ));
         window.pack();
         window.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.setResizable(true);
         window.setVisible(true);
+    }
 
-        controlPanel.grabFocus();
+    public void toggleControlPanelVisibility()
+    {
+        if (controlPanel.isVisible())
+        {
+            controlPanel.toggleVisibility();
+            cubeInfoPanel.setPreferredSize(new Dimension(1050, 700));
+            cubeInfoPanel.getDisplayCube().setWindowDimensionX(1050);
+        }
+        else {
+            cubeInfoPanel.setPreferredSize(new Dimension(650, 700));
+            cubeInfoPanel.getDisplayCube().setWindowDimensionX(650);
+            controlPanel.toggleVisibility();
+        }
+
+
+        //cubeInfoPanel.getDisplayCube().setWindowDimension(800);
+
     }
 
 }
