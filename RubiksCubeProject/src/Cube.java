@@ -9,6 +9,7 @@ public class Cube {
     private int rightFaceIndex;
     private DisplayCube displayCube;
     private String currentScramble;
+    //private LeftToolsPanel leftToolsPanel;
 
     public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
 
@@ -241,6 +242,7 @@ public class Cube {
                 rotateCube(LayerNotation.Z, TurnDirection.COUNTERCLOCKWISE);
                 break;
         }
+
         displayCube.update();
 
     }

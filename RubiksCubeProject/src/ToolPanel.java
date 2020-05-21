@@ -11,7 +11,7 @@ public class ToolPanel extends JPanel {
 
     public ToolPanel(Cube cube) {
 
-        isVisible = false;
+        isVisible = true;
         setLayout(new BorderLayout());
         cubeNet = new CubeNetPanel(cube);
         leftToolsPanel = new LeftToolsPanel(cube.getDisplayCube());

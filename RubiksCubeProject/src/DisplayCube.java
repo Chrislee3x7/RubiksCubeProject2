@@ -1,9 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 public class DisplayCube extends JLayeredPane {
 
@@ -13,7 +9,9 @@ public class DisplayCube extends JLayeredPane {
 
     private static final int CUBE_SPACE_ALLOCATED_WITH_TOOLS = 550;
 
-    private static final int WINDOW_DIMENSION = 650;
+    private int WINDOW_DIMENSIONX = 650;
+
+    private int WINDOW_DIMENSIONY = 650;
 
     private static final int CUBE_OFFSET_FROM_WINDOW_EDGE = 40;
 
@@ -36,9 +34,15 @@ public class DisplayCube extends JLayeredPane {
 
     public DisplayCube(Cube cube) {
         this.cube = cube;
-        setPreferredSize(new Dimension(WINDOW_DIMENSION, WINDOW_DIMENSION + 50));
+        setPreferredSize(new Dimension(WINDOW_DIMENSIONX, WINDOW_DIMENSIONY + 50));
         currentView = View.TOP_FRONT_RIGHT;
         //System.out.println(APOTHEM);
+        //setBorder(BorderFactory.createLineBorder(Color.RED));
+    }
+
+    public void setWindowDimensionX(int x)
+    {
+        WINDOW_DIMENSIONX = x;
     }
 
 
@@ -62,7 +66,6 @@ public class DisplayCube extends JLayeredPane {
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         //displayCube0(g);
         //currentView = View.FRONT;
         switch (currentView) {
@@ -84,7 +87,7 @@ public class DisplayCube extends JLayeredPane {
     //All display view type 0: FRONT
     public void displayCube0(Graphics g) {
         double cubeSideLength = APOTHEM * Math.sqrt(2);
-        g.fillRect((int) (WINDOW_DIMENSION / 2 - cubeSideLength / 2),
+        g.fillRect((int) (WINDOW_DIMENSIONX / 2 - cubeSideLength / 2),
                 (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2),
                 (int) cubeSideLength, (int) cubeSideLength);
         CubeFace currentFace = cube.getCubeFaceArray()[cube.getFrontFaceIndex()];
@@ -99,7 +102,7 @@ public class DisplayCube extends JLayeredPane {
         double cubeSideLength = APOTHEM * Math.sqrt(2);
         double stickerGap = STICKER_GAP / 2 * Math.sqrt(2);
         double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
-        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+        g.fillRect((int) ((WINDOW_DIMENSIONX / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
                 (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
                 (int) stickerLength, (int) stickerLength);
     }
@@ -108,7 +111,7 @@ public class DisplayCube extends JLayeredPane {
     public void displayCube1(Graphics g) {
         double shortCubeSideLength = APOTHEM;
         double cubeSideLength = APOTHEM * Math.sqrt(2);
-        g.fillRect((int) (WINDOW_DIMENSION / 2 - cubeSideLength / 2), (int) (cubeSpaceAllocated / 2 - shortCubeSideLength),
+        g.fillRect((int) (WINDOW_DIMENSIONX / 2 - cubeSideLength / 2), (int) (cubeSpaceAllocated / 2 - shortCubeSideLength),
                 (int) cubeSideLength, (int) (shortCubeSideLength * 2));
         CubeFace currentFace = cube.getCubeFaceArray()[cube.getUpFaceIndex()];
         for (Sticker sticker : currentFace.getAllStickers()) {
@@ -131,7 +134,7 @@ public class DisplayCube extends JLayeredPane {
         double shortStickerGap = STICKER_GAP / 2;
         double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
         double shortStickerLength = STICKER_DIAGONAL / 2;
-        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+        g.fillRect((int) ((WINDOW_DIMENSIONX / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
                 (int) (cubeSpaceAllocated / 2 - shortCubeSideLength + shortStickerGap + y * (shortStickerGap + shortStickerLength)),
                 (int) stickerLength, (int) shortStickerLength);
 
@@ -144,7 +147,7 @@ public class DisplayCube extends JLayeredPane {
         double shortStickerGap = STICKER_GAP / 2;
         double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
         double shortStickerLength = STICKER_DIAGONAL / 2;
-        g.fillRect((int) ((WINDOW_DIMENSION / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
+        g.fillRect((int) ((WINDOW_DIMENSIONX / 2 - cubeSideLength / 2 + stickerGap + x * (stickerGap + stickerLength))),
                 (int) (cubeSpaceAllocated / 2 + shortStickerGap + y * (shortStickerGap + shortStickerLength)),
                 (int) stickerLength, (int) shortStickerLength);
     }
@@ -154,7 +157,7 @@ public class DisplayCube extends JLayeredPane {
     public void displayCube2(Graphics g) {
         double shortCubeSideLength = APOTHEM;
         double cubeSideLength = APOTHEM * Math.sqrt(2);
-        g.fillRect((int) (WINDOW_DIMENSION / 2 - shortCubeSideLength), (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2),
+        g.fillRect((int) (WINDOW_DIMENSIONX / 2 - shortCubeSideLength), (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2),
                 (int) (shortCubeSideLength * 2), (int) cubeSideLength);
         CubeFace currentFace = cube.getCubeFaceArray()[cube.getFrontFaceIndex()];
         for (Sticker sticker : currentFace.getAllStickers()) {
@@ -177,7 +180,7 @@ public class DisplayCube extends JLayeredPane {
         double shortStickerGap = STICKER_GAP / 2;
         double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
         double shortStickerLength = STICKER_DIAGONAL / 2;
-        g.fillRect((int) ((WINDOW_DIMENSION / 2 - shortCubeSideLength + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
+        g.fillRect((int) ((WINDOW_DIMENSIONX / 2 - shortCubeSideLength + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
                 (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
                 (int) shortStickerLength, (int) stickerLength);
     }
@@ -189,7 +192,7 @@ public class DisplayCube extends JLayeredPane {
         double shortStickerGap = STICKER_GAP / 2;
         double stickerLength = STICKER_DIAGONAL / 2 * Math.sqrt(2);
         double shortStickerLength = STICKER_DIAGONAL / 2;
-        g.fillRect((int) ((WINDOW_DIMENSION / 2 + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
+        g.fillRect((int) ((WINDOW_DIMENSIONX / 2 + shortStickerGap + x * (shortStickerGap + shortStickerLength))),
                 (int) (cubeSpaceAllocated / 2 - cubeSideLength / 2 + stickerGap + y * (stickerGap + stickerLength)),
                 (int) shortStickerLength, (int) stickerLength);
     }
@@ -197,20 +200,20 @@ public class DisplayCube extends JLayeredPane {
         //All display view type 3: TOP_FRONT_RIGHT
     public void displayCube3(Graphics g) {
         Polygon rhombus1 = new Polygon();
-        rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
-        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
-        rhombus1.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 - CUBE_RADIUS);
-        rhombus1.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
+        rhombus1.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2);
+        rhombus1.addPoint((int) (WINDOW_DIMENSIONX / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
+        rhombus1.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2 - CUBE_RADIUS);
+        rhombus1.addPoint((int) (WINDOW_DIMENSIONX / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
         Polygon rhombus2 = new Polygon();
-        rhombus2.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
-        rhombus2.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
-        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
-        rhombus2.addPoint((int) (WINDOW_DIMENSION / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
+        rhombus2.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2);
+        rhombus2.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
+        rhombus2.addPoint((int) (WINDOW_DIMENSIONX / 2 - APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
+        rhombus2.addPoint((int) (WINDOW_DIMENSIONX / 2 - APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
         Polygon rhombus3 = new Polygon();
-        rhombus3.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2);
-        rhombus3.addPoint(WINDOW_DIMENSION / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
-        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
-        rhombus3.addPoint((int) (WINDOW_DIMENSION / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
+        rhombus3.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2);
+        rhombus3.addPoint(WINDOW_DIMENSIONX / 2, cubeSpaceAllocated / 2 + CUBE_RADIUS);
+        rhombus3.addPoint((int) (WINDOW_DIMENSIONX / 2 + APOTHEM), cubeSpaceAllocated / 2 + CUBE_RADIUS / 2);
+        rhombus3.addPoint((int) (WINDOW_DIMENSIONX / 2 + APOTHEM), cubeSpaceAllocated / 2 - CUBE_RADIUS / 2);
 
         g.setColor(Color.BLACK);
         g.fillPolygon(rhombus1);
@@ -253,13 +256,13 @@ public class DisplayCube extends JLayeredPane {
     public Polygon makeUpFaceSticker3(int sX, int sY) {
         final double horizontalTranslate = (0.5 * STICKER_GAP + 0.5 * STICKER_DIAGONAL);
         final double verticalTranslate = SHORT_STICKER_GAP + 0.5 * STICKER_LENGTH;
-        final double baseX1 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL);
+        final double baseX1 = (WINDOW_DIMENSIONX / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL);
         final double baseY1 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
-        final double baseX2 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
+        final double baseX2 = (WINDOW_DIMENSIONX / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
         final double baseY2 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + 2 * SHORT_STICKER_GAP);
-        final double baseX3 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL + STICKER_DIAGONAL);
+        final double baseX3 = (WINDOW_DIMENSIONX / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL + STICKER_DIAGONAL);
         final double baseY3 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH / 2 + 2 * SHORT_STICKER_GAP);
-        final double baseX4 = (WINDOW_DIMENSION / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
+        final double baseX4 = (WINDOW_DIMENSIONX / 2 - APOTHEM + 2 * STICKER_GAP + STICKER_DIAGONAL / 2 + STICKER_DIAGONAL);
         final double baseY4 = (cubeSpaceAllocated / 2 - CUBE_RADIUS + STICKER_LENGTH + 2 * SHORT_STICKER_GAP);
 
         Polygon sticker = new Polygon();
@@ -279,13 +282,13 @@ public class DisplayCube extends JLayeredPane {
         final double horizontalTranslate = STICKER_DIAGONAL / 2 + STICKER_GAP / 2;
         final double verticalTranslate = STICKER_LENGTH + 2 * SHORT_STICKER_GAP;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;
-        final double baseX1 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2);
+        final double baseX1 = (WINDOW_DIMENSIONX / 2 - APOTHEM + STICKER_GAP / 2);
         final double baseY1 = (cubeSpaceAllocated / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
-        final double baseX2 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2);
+        final double baseX2 = (WINDOW_DIMENSIONX / 2 - APOTHEM + STICKER_GAP / 2);
         final double baseY2 = (cubeSpaceAllocated / 2 - STICKER_LENGTH - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
-        final double baseX3 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
+        final double baseX3 = (WINDOW_DIMENSIONX / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
         final double baseY3 = (cubeSpaceAllocated / 2 - STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
-        final double baseX4 = (WINDOW_DIMENSION / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
+        final double baseX4 = (WINDOW_DIMENSIONX / 2 - APOTHEM + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
         final double baseY4 = (cubeSpaceAllocated / 2 + STICKER_LENGTH / 2 - SHORT_STICKER_GAP - STICKER_LENGTH / 2);
 
         Polygon sticker = new Polygon();
@@ -301,13 +304,13 @@ public class DisplayCube extends JLayeredPane {
         final double horizontalTranslate = STICKER_DIAGONAL / 2 + STICKER_GAP / 2;
         final double verticalTranslate = STICKER_LENGTH + SHORT_STICKER_GAP * 2;
         final double horizontalCausedVerticalTranslate = STICKER_LENGTH / 2 + SHORT_STICKER_GAP;
-        final double baseX1 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
+        final double baseX1 = (WINDOW_DIMENSIONX / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
         final double baseY1 = (cubeSpaceAllocated / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
-        final double baseX2 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
+        final double baseX2 = (WINDOW_DIMENSIONX / 2 + STICKER_GAP / 2 + STICKER_DIAGONAL / 2);
         final double baseY2 = (cubeSpaceAllocated / 2 - STICKER_LENGTH + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
-        final double baseX3 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2);
+        final double baseX3 = (WINDOW_DIMENSIONX / 2 + STICKER_GAP / 2);
         final double baseY3 = (cubeSpaceAllocated / 2 - STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
-        final double baseX4 = (WINDOW_DIMENSION / 2 + STICKER_GAP / 2);
+        final double baseX4 = (WINDOW_DIMENSIONX / 2 + STICKER_GAP / 2);
         final double baseY4 = (cubeSpaceAllocated / 2 + STICKER_LENGTH / 2 + SHORT_STICKER_GAP + STICKER_LENGTH / 2);
 
         Polygon sticker = new Polygon();
