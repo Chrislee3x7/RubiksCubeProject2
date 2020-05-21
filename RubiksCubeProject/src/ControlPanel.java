@@ -2,8 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.security.Key;
 
-public class ControlPanel extends JPanel implements KeyListener {
+public class ControlPanel extends JPanel {
 
     private static final int WIDTH = 400;
 
@@ -16,6 +17,8 @@ public class ControlPanel extends JPanel implements KeyListener {
     private GridLayout layout;
 
     private LeftToolsPanel leftToolsPanel;
+
+
 
     private static String[] allNotation = {"M", "M'", "x", "x'", "E", "E'", "y", "y'", "S", "S'", "z", "z'",
             "U", "U'", "D", "D'", "F", "F'", "B", "B'", "R", "R'", "L", "L'"};
@@ -34,18 +37,6 @@ public class ControlPanel extends JPanel implements KeyListener {
 
         setFocusable(true);
         //System.out.println(isFocusable());
-    }
-
-    public void keyTyped(KeyEvent e) {
-        System.out.println("key typed");
-        System.out.println(e.getKeyChar());
-    }
-
-    public void keyPressed(KeyEvent e) {
-        System.out.println("key pressed");
-    }
-
-    public void keyReleased(KeyEvent e) {
 
     }
 
