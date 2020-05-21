@@ -69,8 +69,7 @@ public class ScramblePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == resetCubeButton) {
             cube.reset();
-            currentScramble = "Click Me To Scramble";
-            updateScramble(currentScramble);
+            resetScramble();
         } else if (e.getSource() == scrambleTextButton) {
             cube.scrambleCube();
             updateScramble(cube.getCurrentScramble());
@@ -81,6 +80,16 @@ public class ScramblePanel extends JPanel implements ActionListener {
             rc.toggleControlPanelVisibility();
 //            cubeInfoPanel.updateDisplayCube();
         }
+    }
+
+    public void resetScramble() {
+        currentScramble = "Click Me To Scramble";
+        updateScramble(currentScramble);
+    }
+
+    public String getCurrentScramble()
+    {
+        return currentScramble;
     }
 
     public void updateScramble(String newScramble) {

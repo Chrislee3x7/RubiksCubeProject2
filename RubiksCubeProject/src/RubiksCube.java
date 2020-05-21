@@ -11,13 +11,14 @@ public class RubiksCube {
 
     CubeInfoPanel cubeInfoPanel;
 
+    ScramblePanel scramblePanel;
+
     public static void main(String[] args) {
         RubiksCube rubiksCube = new RubiksCube();
 
     }
 
-    public RubiksCube()
-    {
+    public RubiksCube() {
         //Starts by making the solved faces in the default "white up green front orientation"
         Cube cube = new Cube(this);
 
@@ -30,7 +31,7 @@ public class RubiksCube {
         window.add(cubeInfoPanel, BorderLayout.WEST);
         window.add(controlPanel, BorderLayout.EAST);
 
-        ScramblePanel scramblePanel = new ScramblePanel(cube, cubeInfoPanel, cubeInfoPanel.getToolPanel().getLeftToolsPanel(), this);
+        scramblePanel = new ScramblePanel(cube, cubeInfoPanel, cubeInfoPanel.getToolPanel().getLeftToolsPanel(), this);
         window.add(scramblePanel, BorderLayout.SOUTH);
 
         //window.setPreferredSize(new Dimension( 600, 650 ));
@@ -40,15 +41,12 @@ public class RubiksCube {
         window.setVisible(true);
     }
 
-    public void toggleControlPanelVisibility()
-    {
-        if (controlPanel.isVisible())
-        {
+    public void toggleControlPanelVisibility() {
+        if (controlPanel.isVisible()) {
             controlPanel.toggleVisibility();
             cubeInfoPanel.setPreferredSize(new Dimension(1050, 700));
             cubeInfoPanel.getDisplayCube().setWindowDimensionX(1050);
-        }
-        else {
+        } else {
             cubeInfoPanel.setPreferredSize(new Dimension(650, 700));
             cubeInfoPanel.getDisplayCube().setWindowDimensionX(650);
             controlPanel.toggleVisibility();
@@ -61,5 +59,13 @@ public class RubiksCube {
 
     public CubeInfoPanel getCubeInfoPanel() {
         return cubeInfoPanel;
+    }
+
+    public ScramblePanel getScramblePanel() {
+        return scramblePanel;
+    }
+
+    public JFrame getWindow() {
+        return window;
     }
 }

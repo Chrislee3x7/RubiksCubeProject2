@@ -1,7 +1,7 @@
 public class CubeFace {
 
-    Sticker[] stickers;
-    StickerColor faceColor;
+    private Sticker[] stickers;
+    private StickerColor faceColor;
 
 
     public CubeFace(StickerColor faceColor, int faceIndex) {
@@ -13,6 +13,10 @@ public class CubeFace {
         this.faceColor = faceColor;
 
 
+    }
+
+    public StickerColor getFaceColor() {
+        return faceColor;
     }
 
     public Sticker getSticker(int stickerIndex)

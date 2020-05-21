@@ -51,6 +51,11 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         setOpaque(false);
     }
 
+    public int getMoveCount()
+    {
+        return numberOfMoves;
+    }
+
     public void addMove(String commandNotation)
     {
         moveHistoryBox.append(commandNotation + " ");

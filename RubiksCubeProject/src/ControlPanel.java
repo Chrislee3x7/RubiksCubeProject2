@@ -45,9 +45,11 @@ public class ControlPanel extends JPanel {
 
     public void toggleVisibility() {
         if (isVisible) {
+            CubeSounds.playClickOff();
             setVisible(false);
             isVisible = false;
         } else {
+            CubeSounds.playClickOn();
             setVisible(true);
             isVisible = true;
         }
@@ -55,6 +57,7 @@ public class ControlPanel extends JPanel {
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
+        CubeSounds.playRotateCubeSound3();
         leftToolsPanel.addMove(commandNotation);
     }
 

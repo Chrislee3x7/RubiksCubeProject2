@@ -28,9 +28,11 @@ public class ToolPanel extends JPanel {
     //a button will do this
     public void toggleVisibility() {
         if (isVisible) {
+            CubeSounds.playClickOff();
             setVisible(false);
             isVisible = false;
         } else {
+            CubeSounds.playClickOn();
             setVisible(true);
             isVisible = true;
         }
