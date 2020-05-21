@@ -181,21 +181,21 @@ public class CubeInfoPanel extends JPanel implements MouseListener, KeyListener 
         if (isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed + "'");
-            LeftToolsPanel.addMove(storedValuePressed + "'");
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed + "'");
         } else if (!isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed);
-            LeftToolsPanel.addMove(storedValuePressed);
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed);
         }
         storedValuePressed = storedValuePressed.toLowerCase();
         if (isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed + "'");
-            LeftToolsPanel.addMove(storedValuePressed + "'");
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed + "'");
         } else if (!isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed);
-            LeftToolsPanel.addMove(storedValuePressed);
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed);
         }
 
     }
