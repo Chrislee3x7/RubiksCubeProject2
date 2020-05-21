@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.security.Key;
 
-public class ControlPanel extends JLayeredPane {
+public class ControlPanel extends JPanel {
 
     private static final int WIDTH = 400;
 

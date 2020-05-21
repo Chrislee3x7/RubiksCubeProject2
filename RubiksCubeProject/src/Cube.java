@@ -9,13 +9,14 @@ public class Cube {
     private int rightFaceIndex;
     private DisplayCube displayCube;
     private String currentScramble;
+    private RubiksCube rubiksCube;
     //private LeftToolsPanel leftToolsPanel;
 
     public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
 
 
-    public Cube() {
-
+    public Cube(RubiksCube rubiksCube) {
+        this.rubiksCube = rubiksCube;
         this.displayCube = new DisplayCube(this);
         cubeFaceArray = new CubeFace[6];
         cubeFaceArray[0] = new CubeFace(StickerColor.WHITE, 0);
@@ -242,7 +243,7 @@ public class Cube {
                 rotateCube(LayerNotation.Z, TurnDirection.COUNTERCLOCKWISE);
                 break;
         }
-
+        rubiksCube.getCubeInfoPanel().getToolPanel().getCubeNet().update();
         displayCube.update();
 
     }

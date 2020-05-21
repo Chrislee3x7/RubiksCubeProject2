@@ -19,7 +19,7 @@ public class RubiksCube {
     public RubiksCube()
     {
         //Starts by making the solved faces in the default "white up green front orientation"
-        Cube cube = new Cube();
+        Cube cube = new Cube(this);
 
         window = new JFrame("Rubik's Cube");
 
@@ -59,4 +59,7 @@ public class RubiksCube {
 
     }
 
+    public CubeInfoPanel getCubeInfoPanel() {
+        return cubeInfoPanel;
+    }
 }
