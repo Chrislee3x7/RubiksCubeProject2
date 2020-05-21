@@ -46,6 +46,10 @@ public class ToolPanel extends JPanel {
         //g.drawRect(40, 40, 40, 40);
     }
 
+    public CubeNetPanel getCubeNet() {
+        return cubeNet;
+    }
+
     public LeftToolsPanel getLeftToolsPanel() {
         return leftToolsPanel;
     }

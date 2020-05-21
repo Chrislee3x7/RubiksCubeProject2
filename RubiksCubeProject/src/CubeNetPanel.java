@@ -1,8 +1,5 @@
-import org.w3c.dom.css.Rect;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.AffineTransform;
 
 public class CubeNetPanel extends JComponent {
 
@@ -19,8 +16,8 @@ public class CubeNetPanel extends JComponent {
         setPreferredSize(new Dimension(325, 200));
     }
 
-    public void displayCubeNet () {
-
+    public void update () {
+        repaint();
     }
 
     public void paintComponent(Graphics g) {
