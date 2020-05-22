@@ -250,6 +250,7 @@ public class Cube {
         rubiksCube.getCubeInfoPanel().getToolPanel().getCubeNet().update();
         displayCube.update();
         if (isSolved() && isScrambled) {
+            CubeSounds.playApplause();
             JOptionPane.showMessageDialog(rubiksCube.getWindow(),
                     "Congratulations, you have solved the cube! \nMoves used: " +
                             rubiksCube.getCubeInfoPanel().getToolPanel().getLeftToolsPanel().getMoveCount()
