@@ -181,21 +181,25 @@ public class CubeInfoPanel extends JPanel implements MouseListener, KeyListener 
         if (isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed + "'");
-            LeftToolsPanel.addMove(storedValuePressed + "'");
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed + "'");
+            CubeSounds.playWoosh2();
         } else if (!isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed);
-            LeftToolsPanel.addMove(storedValuePressed);
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed);
+            CubeSounds.playWoosh2();
         }
         storedValuePressed = storedValuePressed.toLowerCase();
         if (isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed + "'");
-            LeftToolsPanel.addMove(storedValuePressed + "'");
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed + "'");
+            CubeSounds.playWoosh3();
         } else if (!isPrimeDown && !storedValuePressed.isEmpty() && moveNotations.contains(storedValuePressed)) {
 
             cube.performMove(storedValuePressed);
-            LeftToolsPanel.addMove(storedValuePressed);
+            toolPanel.getLeftToolsPanel().addMove(storedValuePressed);
+            CubeSounds.playWoosh3();
         }
 
     }

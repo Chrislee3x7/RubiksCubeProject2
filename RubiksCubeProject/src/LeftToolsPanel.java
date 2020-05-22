@@ -12,9 +12,13 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
 
     private DisplayCube displayCube;
 
-    private static JTextArea moveHistoryBox;
+    private JTextArea moveHistoryBox;
 
     private JScrollPane scroll;
+
+    private JLabel moveCountBox;
+
+    private int numberOfMoves = 0;
 
     public LeftToolsPanel(DisplayCube displayCube) {
         this.displayCube = displayCube;
@@ -26,7 +30,7 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
         moveHistoryBox.setLineWrap(true);
         moveHistoryBox.setWrapStyleWord(true);
         scroll = new JScrollPane(moveHistoryBox);
-        scroll.setPreferredSize(new Dimension(325, 150));
+        scroll.setPreferredSize(new Dimension(325, 130));
         moveHistoryBox.setOpaque(false);
         moveHistoryBox.setBackground(new Color(255,252,187, 50));
         scroll.setOpaque(false);
@@ -37,15 +41,26 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
 
         viewOptions.addActionListener(this);
         viewOptions.setSelectedItem("Top-Front-Right View");
+
+        moveCountBox = new JLabel("Move count: " + numberOfMoves);
+
         setLayout(new BorderLayout());
         add(scroll, BorderLayout.NORTH);
+        add(moveCountBox, BorderLayout.CENTER);
         add(viewOptions, BorderLayout.SOUTH);
         setOpaque(false);
     }
 
-    public static void addMove(String commandNotation)
+    public int getMoveCount()
+    {
+        return numberOfMoves;
+    }
+
+    public void addMove(String commandNotation)
     {
         moveHistoryBox.append(commandNotation + " ");
+        numberOfMoves++;
+        updateMoveCountBox();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -74,5 +89,12 @@ public class LeftToolsPanel extends JPanel implements ActionListener{
     }
     public void resetMoveHistoryBox() {
         moveHistoryBox.setText("");
+        numberOfMoves = 0;
+        updateMoveCountBox();
+    }
+
+    public void updateMoveCountBox()
+    {
+        moveCountBox.setText("Move count: " + numberOfMoves);
     }
 }

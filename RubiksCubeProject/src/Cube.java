@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ public class Cube {
     private DisplayCube displayCube;
     private String currentScramble;
     private RubiksCube rubiksCube;
+    private boolean isScrambled = false;
+    private boolean solvedByUser = false;
     //private LeftToolsPanel leftToolsPanel;
 
     public static String[] moveNotations = {"U", "L", "F", "U'", "L'", "F'", "R", "B", "D", "R'", "B'", "D'"};
@@ -60,6 +63,7 @@ public class Cube {
 
     public void scrambleCube() {
         reset();
+        isScrambled = true;
         List<String> scramble = scrambleGenerator();
         StringBuilder scrambleToString = new StringBuilder();
         for (int i = 0; i < scramble.size(); i++) {
@@ -245,7 +249,29 @@ public class Cube {
         }
         rubiksCube.getCubeInfoPanel().getToolPanel().getCubeNet().update();
         displayCube.update();
+        if (isSolved() && isScrambled) {
+            CubeSounds.playApplause();
+            JOptionPane.showMessageDialog(rubiksCube.getWindow(),
+                    "Congratulations, you have solved the cube! \nMoves used: " +
+                            rubiksCube.getCubeInfoPanel().getToolPanel().getLeftToolsPanel().getMoveCount()
+                            + "\nScramble used: " + rubiksCube.getScramblePanel().getCurrentScramble());
+            isScrambled = false;
+            rubiksCube.getScramblePanel().resetScramble();
+        }
+    }
 
+    public boolean isSolved() {
+        for (int i = 0; i < cubeFaceArray.length; i++) {
+            CubeFace testFace = cubeFaceArray[i];
+            StickerColor currentFaceColor = testFace.getSticker(0).getColor();
+            for (int j = 0; j < 9; j++) {
+                if (testFace.getSticker(j).getColor() != currentFaceColor) {
+                    return false;
+                }
+            }
+        }
+        //System.out.println("Solved");
+        return true;
     }
 
     public void reset() {
@@ -255,7 +281,8 @@ public class Cube {
         cubeFaceArray[3] = new CubeFace(StickerColor.RED, 3);
         cubeFaceArray[4] = new CubeFace(StickerColor.BLUE, 4);
         cubeFaceArray[5] = new CubeFace(StickerColor.YELLOW, 5);
-
+        isScrambled = false;
+        rubiksCube.getCubeInfoPanel().getToolPanel().getCubeNet().update();
         displayCube.update();
     }
 

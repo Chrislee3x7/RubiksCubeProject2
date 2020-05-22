@@ -11,7 +11,7 @@ public class ToolPanel extends JPanel {
 
     public ToolPanel(Cube cube) {
 
-        isVisible = true;
+        isVisible = false;
         setLayout(new BorderLayout());
         cubeNet = new CubeNetPanel(cube);
         leftToolsPanel = new LeftToolsPanel(cube.getDisplayCube());
@@ -28,9 +28,11 @@ public class ToolPanel extends JPanel {
     //a button will do this
     public void toggleVisibility() {
         if (isVisible) {
+            CubeSounds.play8BitPowerUp1();
             setVisible(false);
             isVisible = false;
         } else {
+            CubeSounds.play8BitPowerUp2();
             setVisible(true);
             isVisible = true;
         }
