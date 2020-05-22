@@ -25,8 +25,10 @@ public class ScramblePanel extends JPanel implements ActionListener {
 
     public ScramblePanel(Cube cube, CubeInfoPanel cubeInfoPanel, LeftToolsPanel leftToolsPanel, RubiksCube rc) {
         this.cube = cube;
+
         this.rc = rc;
         this.cubeInfoPanel = cubeInfoPanel;
+
         this.leftToolsPanel = leftToolsPanel;
         //setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
@@ -36,12 +38,15 @@ public class ScramblePanel extends JPanel implements ActionListener {
         resetCubeButton.addActionListener(this);
         resetCubeButton.setPreferredSize(new Dimension(100, 40));
 
+        resetCubeButton.setToolTipText("Resets cube to solved form");
+
         scrambleTextButton = new JButton(currentScramble);
         scrambleTextButton.setPreferredSize(new Dimension(780, 40));
         scrambleTextButton.addActionListener(this);
         scrambleTextButton.setFont(new Font("Hebrew", Font.ITALIC, 25));
         scrambleTextButton.setHorizontalAlignment(JButton.CENTER);
 
+        scrambleTextButton.setToolTipText("Scrambles cube and shows scramble");
 
         toolPanelButton = new JButton("Tools");
         toolPanelButton.setPreferredSize(new Dimension(100, 40));
@@ -49,10 +54,15 @@ public class ScramblePanel extends JPanel implements ActionListener {
         toolPanelButton.setBackground(Color.RED);
         toolPanelButton.addActionListener(this);
 
+        toolPanelButton.setToolTipText("Open panel with cube net, \nview selection, and move history");
+
         controlPanelButton = new JButton("^");
         controlPanelButton.setPreferredSize(new Dimension(40, 40));
         controlPanelButton.setFont(new Font("Hebrew", Font.PLAIN, 20));
         controlPanelButton.addActionListener(this);
+
+        controlPanelButton.setToolTipText("Closes control panel");
+
 
         //scrambleTextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 

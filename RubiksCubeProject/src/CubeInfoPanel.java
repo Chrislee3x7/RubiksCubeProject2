@@ -64,6 +64,8 @@ public class CubeInfoPanel extends JPanel implements MouseListener, KeyListener 
         this.cube = cube;
         displayCube = cube.getDisplayCube();
 
+        displayCube.setToolTipText("Click the cube for keyboard notations");
+
         toolPanel = new ToolPanel(cube);
 
         //setFocusable(true);

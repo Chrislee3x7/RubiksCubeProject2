@@ -9,6 +9,10 @@ public class ToolPanel extends JPanel {
 
     private LeftToolsPanel leftToolsPanel;
 
+    public void setPreferredSize(Dimension preferredSize) {
+        super.setPreferredSize(preferredSize);
+    }
+
     public ToolPanel(Cube cube) {
 
         isVisible = false;
