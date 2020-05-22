@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2a8577be-9652-46b4-99bc-9b6c665a363c" name="Default" comment="" />
+    <list default="true" id="2a8577be-9652-46b4-99bc-9b6c665a363c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +36,8 @@
       <file leaf-file-name="Cube.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Cube.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="388">
-              <caret line="252" column="38" lean-forward="true" selection-start-line="252" selection-start-column="38" selection-end-line="252" selection-end-column="38" />
+            <state relative-caret-position="255">
+              <caret line="258" column="12" lean-forward="false" selection-start-line="258" selection-start-column="12" selection-end-line="258" selection-end-column="12" />
               <folding>
                 <element signature="e#2979#3022#0" expanded="false" />
                 <element signature="method#scrambleGenerator#0;class#Cube#0" expanded="false" />
@@ -419,7 +421,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="25" />
+      <option name="time" value="26" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -885,8 +887,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Cube.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="252" column="38" lean-forward="true" selection-start-line="252" selection-start-column="38" selection-end-line="252" selection-end-column="38" />
+        <state relative-caret-position="255">
+          <caret line="258" column="12" lean-forward="false" selection-start-line="258" selection-start-column="12" selection-end-line="258" selection-end-column="12" />
           <folding>
             <element signature="e#2979#3022#0" expanded="false" />
             <element signature="method#scrambleGenerator#0;class#Cube#0" expanded="false" />

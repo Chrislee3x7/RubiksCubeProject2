@@ -255,6 +255,7 @@ public class Cube {
                     "Congratulations, you have solved the cube! \nMoves used: " +
                             rubiksCube.getCubeInfoPanel().getToolPanel().getLeftToolsPanel().getMoveCount()
                             + "\nScramble used: " + rubiksCube.getScramblePanel().getCurrentScramble());
+            isScrambled = false;
             rubiksCube.getScramblePanel().resetScramble();
         }
     }
