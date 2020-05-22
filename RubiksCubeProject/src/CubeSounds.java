@@ -134,4 +134,130 @@ public class CubeSounds {
 
         AudioPlayer.player.start(audioStream);
     }
+
+    public static void playWoosh2() {
+        String tinyButtonPush = "RubiksCubeProject/Woosh2.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void playWoosh3() {
+        String tinyButtonPush = "RubiksCubeProject/Woosh3.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void play8BitPowerUp1() {
+        String tinyButtonPush = "RubiksCubeProject/8BitPowerUp1.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void play8BitPowerUp2() {
+        String tinyButtonPush = "RubiksCubeProject/8BitPowerUp2.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void playUmbrellaOpening() {
+        String tinyButtonPush = "RubiksCubeProject/UmbrellaOpening.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void playHighTechWhoosh() {
+        String tinyButtonPush = "RubiksCubeProject/HighTechWhoosh.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
+
+    public static void playHighSweepSlide() {
+        String tinyButtonPush = "RubiksCubeProject/HiSweepSlide.wav";
+        InputStream in = null;
+        try {
+            in = new FileInputStream(tinyButtonPush);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        AudioStream audioStream = null;
+        try {
+            audioStream = new AudioStream(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        AudioPlayer.player.start(audioStream);
+    }
 }

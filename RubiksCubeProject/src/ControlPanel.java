@@ -45,11 +45,11 @@ public class ControlPanel extends JPanel {
 
     public void toggleVisibility() {
         if (isVisible) {
-            CubeSounds.playClickOff();
+            CubeSounds.play8BitPowerUp1();
             setVisible(false);
             isVisible = false;
         } else {
-            CubeSounds.playClickOn();
+            CubeSounds.play8BitPowerUp2();
             setVisible(true);
             isVisible = true;
         }
@@ -57,7 +57,12 @@ public class ControlPanel extends JPanel {
 
     public void sendCommand(String commandNotation) {
         cube.performMove(commandNotation);
-        CubeSounds.playRotateCubeSound3();
+        if (commandNotation.contains("x") || commandNotation.contains("y") || commandNotation.contains("z")) {
+            CubeSounds.playWoosh3();
+        }
+        else {
+            CubeSounds.playWoosh2();
+        }
         leftToolsPanel.addMove(commandNotation);
     }
 

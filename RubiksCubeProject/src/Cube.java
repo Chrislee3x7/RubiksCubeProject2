@@ -268,7 +268,7 @@ public class Cube {
                 }
             }
         }
-        System.out.println("Solved");
+        //System.out.println("Solved");
         return true;
     }
 

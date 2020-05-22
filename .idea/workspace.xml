@@ -2,22 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2a8577be-9652-46b4-99bc-9b6c665a363c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/ClickOff.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/ClickOn.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/ComputerErrorSound.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/DryFireGun.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/Pling.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/TinyButtonPushSound.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/Whoosh.wav" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/8BitPowerUp1.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/8BitPowerUp2.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/HiSweepSlide.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/HighTechWhoosh.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/UmbrellaOpening.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/Woosh2.wav" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/RubiksCubeProject/Woosh3.wav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/Cube.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/Cube.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/CubeFace.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/CubeFace.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/RubiksCube.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/RubiksCube.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java" afterPath="$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,8 +47,8 @@
       <file leaf-file-name="Cube.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Cube.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="248" column="9" lean-forward="false" selection-start-line="248" selection-start-column="9" selection-end-line="248" selection-end-column="9" />
+            <state relative-caret-position="558">
+              <caret line="270" column="10" lean-forward="false" selection-start-line="270" selection-start-column="10" selection-end-line="270" selection-end-column="10" />
               <folding>
                 <element signature="e#2979#3022#0" expanded="false" />
                 <element signature="method#scrambleGenerator#0;class#Cube#0" expanded="false" />
@@ -86,7 +81,7 @@
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="120" column="59" lean-forward="false" selection-start-line="120" selection-start-column="59" selection-end-line="120" selection-end-column="59" />
+              <caret line="246" column="63" lean-forward="false" selection-start-line="246" selection-start-column="63" selection-end-line="246" selection-end-column="63" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -94,17 +89,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LeftToolsPanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
+      <file leaf-file-name="ControlPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="608">
-              <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-              <folding>
-                <element signature="e#1821#1822#0" expanded="true" />
-                <element signature="e#1857#1858#0" expanded="true" />
-                <element signature="e#3019#3020#0" expanded="true" />
-                <element signature="e#3087#3088#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="488">
+              <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -112,8 +102,8 @@
       <file leaf-file-name="CubeInfoPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
-              <caret line="184" column="22" lean-forward="false" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="22" />
+            <state relative-caret-position="479">
+              <caret line="183" column="28" lean-forward="false" selection-start-line="183" selection-start-column="28" selection-end-line="183" selection-end-column="28" />
               <folding>
                 <element signature="initializer##0;class#CubeInfoPanel#0" expanded="false" />
                 <element signature="e#2425#2464#0" expanded="false" />
@@ -126,25 +116,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ScramblePanel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java">
+      <file leaf-file-name="LeftToolsPanel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+            <state relative-caret-position="131">
+              <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
               <folding>
-                <element signature="e#3121#3122#0" expanded="true" />
-                <element signature="e#3159#3160#0" expanded="true" />
+                <element signature="e#1821#1822#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#3019#3020#0" expanded="true" />
+                <element signature="e#3087#3088#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ControlPanel.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java">
+      <file leaf-file-name="ScramblePanel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-              <folding />
+            <state relative-caret-position="123">
+              <caret line="76" column="44" lean-forward="true" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
+              <folding>
+                <element signature="e#3261#3262#0" expanded="true" />
+                <element signature="e#3299#3300#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,12 +147,12 @@
       <file leaf-file-name="ToolPanel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
+            <state relative-caret-position="88">
+              <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1358#1359#0" expanded="true" />
-                <element signature="e#1388#1389#0" expanded="true" />
+                <element signature="e#1367#1368#0" expanded="true" />
+                <element signature="e#1397#1398#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -214,13 +209,13 @@
       <list>
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/CubeFace.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java" />
-        <option value="$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/RubiksCube.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/Cube.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java" />
-        <option value="$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java" />
         <option value="$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java" />
+        <option value="$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java" />
+        <option value="$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java" />
       </list>
     </option>
   </component>
@@ -405,7 +400,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1276" height="777" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3262519" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -415,7 +409,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.22913505" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="465" y="239" width="659" height="282" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" show_stripe_button="true" weight="0.22913505" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="308" y="278" width="659" height="266" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -640,8 +634,8 @@
           <caret line="15" column="39" lean-forward="true" selection-start-line="15" selection-start-column="39" selection-end-line="15" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1358#1359#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1397#1398#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -822,10 +816,69 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+          <folding>
+            <element signature="e#1238#1239#0" expanded="true" />
+            <element signature="e#1292#1293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="183" column="28" lean-forward="false" selection-start-line="183" selection-start-column="28" selection-end-line="183" selection-end-column="28" />
+          <folding>
+            <element signature="initializer##0;class#CubeInfoPanel#0" expanded="false" />
+            <element signature="e#2425#2464#0" expanded="false" />
+            <element signature="e#3899#3900#0" expanded="true" />
+            <element signature="e#3933#3934#0" expanded="true" />
+            <element signature="e#3980#3981#0" expanded="true" />
+            <element signature="e#4024#4025#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1397#1398#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
+          <folding>
+            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#3019#3020#0" expanded="true" />
+            <element signature="e#3087#3088#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/Cube.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="248" column="9" lean-forward="false" selection-start-line="248" selection-start-column="9" selection-end-line="248" selection-end-column="9" />
+        <state relative-caret-position="558">
+          <caret line="270" column="10" lean-forward="false" selection-start-line="270" selection-start-column="10" selection-end-line="270" selection-end-column="10" />
           <folding>
             <element signature="e#2979#3022#0" expanded="false" />
             <element signature="method#scrambleGenerator#0;class#Cube#0" expanded="false" />
@@ -853,83 +906,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlButton.java">
+    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="29" column="27" lean-forward="true" selection-start-line="29" selection-start-column="27" selection-end-line="29" selection-end-column="27" />
+        <state relative-caret-position="306">
+          <caret line="246" column="63" lean-forward="false" selection-start-line="246" selection-start-column="63" selection-end-line="246" selection-end-column="63" />
           <folding>
-            <element signature="e#1238#1239#0" expanded="true" />
-            <element signature="e#1292#1293#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ScramblePanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="71" column="28" lean-forward="true" selection-start-line="71" selection-start-column="28" selection-end-line="71" selection-end-column="28" />
+        <state relative-caret-position="123">
+          <caret line="76" column="44" lean-forward="true" selection-start-line="76" selection-start-column="44" selection-end-line="76" selection-end-column="44" />
           <folding>
-            <element signature="e#3121#3122#0" expanded="true" />
-            <element signature="e#3159#3160#0" expanded="true" />
+            <element signature="e#3261#3262#0" expanded="true" />
+            <element signature="e#3299#3300#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeInfoPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="184" column="22" lean-forward="false" selection-start-line="184" selection-start-column="12" selection-end-line="184" selection-end-column="22" />
-          <folding>
-            <element signature="initializer##0;class#CubeInfoPanel#0" expanded="false" />
-            <element signature="e#2425#2464#0" expanded="false" />
-            <element signature="e#3899#3900#0" expanded="true" />
-            <element signature="e#3933#3934#0" expanded="true" />
-            <element signature="e#3980#3981#0" expanded="true" />
-            <element signature="e#4024#4025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/CubeSounds.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="120" column="59" lean-forward="false" selection-start-line="120" selection-start-column="59" selection-end-line="120" selection-end-column="59" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ToolPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="27" column="27" lean-forward="true" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1358#1359#0" expanded="true" />
-            <element signature="e#1388#1389#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/LeftToolsPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="608">
-          <caret line="55" column="29" lean-forward="false" selection-start-line="55" selection-start-column="29" selection-end-line="55" selection-end-column="29" />
-          <folding>
-            <element signature="e#1821#1822#0" expanded="true" />
-            <element signature="e#1857#1858#0" expanded="true" />
-            <element signature="e#3019#3020#0" expanded="true" />
-            <element signature="e#3087#3088#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RubiksCubeProject/src/ControlPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="51" column="37" lean-forward="true" selection-start-line="51" selection-start-column="37" selection-end-line="51" selection-end-column="37" />
-          <folding />
         </state>
       </provider>
     </entry>
